@@ -1,0 +1,254 @@
+<form #regForm="ngForm" (ngSubmit)="finishRegistration()">
+    <div class="banner">
+      <h2>REGISTRATION WIZARD</h2>
+    </div>
+  
+    <div class="form-container">
+      <div class="required-note">* Indicates a required field</div>
+  
+      <!-- Email -->
+      <div class="form-row">
+        <div class="form-label">
+          <label for="email">Login ID (Email address): *</label>
+        </div>
+        <div class="form-input">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="form.email"
+            #email="ngModel"
+            required
+            email
+            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+          />
+          <div class="error" *ngIf="email.invalid && email.touched">
+            <div *ngIf="email.errors?.['required']">Email is required.</div>
+            <div *ngIf="email.errors?.['email'] || email.errors?.['pattern']">
+              Enter a valid email address.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+  
+      <!-- Confirm Email -->
+      <div class="form-row">
+        <div class="form-label">
+          <label for="email-confirm">Re-enter your email: *</label>
+        </div>
+        <div class="form-input">
+          <input type="email" id="email-confirm" name="emailConfirm" [(ngModel)]="form.emailConfirm" #emailConfirm="ngModel" required>
+          <div class="error" *ngIf="emailConfirm.touched && emailConfirm.invalid">
+            <div *ngIf="emailConfirm.errors?.['required']">Confirmation email is required.</div>
+          </div>
+          <div class="error" *ngIf="emailConfirm.touched && form.email !== form.emailConfirm">
+            Email addresses do not match.
+          </div>
+        </div>
+      </div>
+  
+      <!-- Date of Birth -->
+<div class="form-row">
+  <div class="form-label">
+    <label>Date of Birth (Insured): *</label>
+  </div>
+  <div class="form-input">
+    <div class="date-inputs">
+      
+      <!-- Day -->
+      <div class="date-input">
+        <label for="day">Day</label>
+        <input
+          type="number"
+          id="day"
+          name="day"
+          [(ngModel)]="form.day"
+          min="1"
+          max="31"
+          required
+          #day="ngModel"
+        />
+        <div class="error" *ngIf="day.invalid && day.touched">
+          <div *ngIf="day.errors?.['required']">Day is required.</div>
+          <div *ngIf="day.errors?.['min'] || day.errors?.['max']">
+            Enter a valid day (1–31).
+          </div>
+        </div>
+      </div>
+
+      <!-- Month -->
+      <div class="date-input">
+        <label for="month">Month</label>
+        <select
+          id="month"
+          name="month"
+          [(ngModel)]="form.month"
+          required
+          #month="ngModel"
+        >
+          <option value="">Select</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+        <div class="error" *ngIf="month.invalid && month.touched">
+          <div *ngIf="month.errors?.['required']">Month is required.</div>
+        </div>
+      </div>
+
+      <!-- Year -->
+      <div class="date-input">
+        <label for="year">Year (4 digits)</label>
+        <input
+          type="number"
+          id="year"
+          name="year"
+          [(ngModel)]="form.year"
+          min="1900"
+          max="2025"
+          required
+          #year="ngModel"
+        />
+        <div class="error" *ngIf="year.invalid && year.touched">
+          <div *ngIf="year.errors?.['required']">Year is required.</div>
+          <div *ngIf="year.errors?.['min'] || year.errors?.['max']">
+            Enter a valid year (1900–2025).
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+      <!-- Phone -->
+      <div class="form-row">
+        <div class="form-label">
+          <label for="phone">Home Phone Number: *</label>
+        </div>
+        <div class="form-input">
+          <input type="tel" id="phone" name="phone" [(ngModel)]="form.phone" #phone="ngModel" required pattern="^[0-9]{10}$">
+          <div class="error" *ngIf="phone.touched && phone.invalid">
+            <div *ngIf="phone.errors?.['required']">Phone number is required.</div>
+            <div *ngIf="phone.errors?.['pattern']">Enter a valid 10-digit phone number.</div>
+          </div>
+        </div>
+      </div>
+  
+     <!-- Login ID (Insured ID) -->
+
+<!--     <div class="form-row">
+        <div class="form-label">
+          <label for="loginId">Login ID (Insured ID): *</label>
+        </div>
+        <div class="form-input">
+          <input type="text" id="loginId" name="loginId" [(ngModel)]="form.loginId" required #loginId="ngModel">
+          <div class="error" *ngIf="loginId.touched && loginId.invalid">
+            <div *ngIf="loginId.errors?.['required']">Login ID is required.</div>
+          </div>
+        </div>
+        </div> 
+-->
+
+      <!-- First Name -->
+      <div class="form-row">
+        <div class="form-label">
+          <label for="firstName">First Name: *</label>
+        </div>
+        <div class="form-input">
+          <input type="text" id="firstName" name="firstName" [(ngModel)]="form.firstName" required #firstName="ngModel">
+          <div class="error" *ngIf="firstName.touched && firstName.invalid">
+            <div *ngIf="firstName.errors?.['required']">First name is required.</div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Last Name -->
+      <div class="form-row">
+        <div class="form-label">
+          <label for="lastName">Last Name: *</label>
+        </div>
+        <div class="form-input">
+          <input type="text" id="lastName" name="lastName" [(ngModel)]="form.lastName" required #lastName="ngModel">
+          <div class="error" *ngIf="lastName.touched && lastName.invalid">
+            <div *ngIf="lastName.errors?.['required']">Last name is required.</div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Password -->
+      <div class="form-row">
+        <div class="form-label">
+          <label for="password">Password: *</label>
+        </div>
+        <div class="form-input">
+          <input type="password" id="password" name="password" [(ngModel)]="form.password" #password="ngModel" required minlength="6">
+          <div class="error" *ngIf="password.touched && password.invalid">
+            <div *ngIf="password.errors?.['required']">Password is required.</div>
+            <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters long.</div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Confirm Password -->
+      <div class="form-row">
+        <div class="form-label">
+          <label for="confirmPassword">Confirm Password: *</label>
+        </div>
+        <div class="form-input">
+          <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="form.confirmPassword" #confirmPassword="ngModel" required>
+          <div class="error" *ngIf="confirmPassword.touched && confirmPassword.invalid">
+            <div *ngIf="confirmPassword.errors?.['required']">Please confirm your password.</div>
+          </div>
+          <div class="error" *ngIf="confirmPassword.touched && form.password !== form.confirmPassword">
+            Passwords do not match.
+          </div>
+        </div>
+      </div>
+  
+      <!-- Terms -->
+      <div class="form-row">
+        <div class="form-label"></div>
+        <div class="form-input">
+          <div class="checkbox-container">
+            <input type="checkbox" id="terms" name="terms" [(ngModel)]="form.terms" #terms="ngModel" required>
+            <label for="terms">I accept the terms *</label>
+            <div class="error" *ngIf="terms.touched && terms.invalid">
+              You must accept the terms.
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Buttons -->
+      <div class="form-row">
+        <div class="form-label"></div>
+        <div class="form-input">
+          <div class="buttons-container">
+            <button type="reset" class="btn btn-reset">RESET</button>
+            <button
+              type="submit"
+              class="btn btn-finish"
+              [disabled]="
+                regForm.invalid || 
+                form.email !== form.emailConfirm || 
+                form.password !== form.confirmPassword
+              ">
+              FINISH
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  

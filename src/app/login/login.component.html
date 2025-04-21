@@ -1,0 +1,143 @@
+<div class="banner">
+  <h2>CLAIM INFORMATION ONLINE</h2>
+</div>
+
+<div class="intro">
+  <p>IF YOU ARE CLAIMING WITH US, YOU HAVE COME TO THE RIGHT PLACE!</p>
+</div>
+
+<div class="container">
+  <p class="guide-heading">
+    We will guide you through the different stages of the claiming process.
+  </p>
+
+
+  <div class="info-table">
+  <!--
+    <div class="info-row">
+      <div class="info-content">
+        <p>
+          To let us know about a <strong>new claim</strong>, the
+          <a (click)="navigateToStartClaim()" class="text-link">Start a Claim</a>
+          section is the best place to start.
+        </p>
+      </div>
+    </div>
+
+    <hr class="row-separator" />
+
+    <div class="info-row">
+      <div class="info-content">
+        <p>
+          To send us your documents, use the
+          <a (click)="navigateToSubmitDocuments()" class="text-link">Submit Documents</a>
+          section.
+        </p>
+      </div>
+    </div>
+
+    <hr class="row-separator" />
+
+    <div class="info-row">
+      <div class="info-content">
+        <p>
+          To follow the <strong>progress of your claim</strong>, visit the
+          <a (click)="navigateToClaimStatus()" class="text-link">Online Claim Status</a>
+          section.
+        </p>
+      </div>
+    </div>
+
+    <hr class="row-separator" />
+
+    <div class="info-row">
+      <div class="info-content">
+        <p>
+          To answer some of your questions, visit the
+          <a (click)="navigateToFAQ()" class="text-link">FAQ</a>
+          section.
+        </p>
+      </div>
+    </div>
+
+    <hr class="row-separator" />
+  -->
+    <div class="info-row">
+      <div class="info-content">
+        <p>
+          Please use <a (click)="navigateToContact()" class="text-link">Contact us</a>
+          to send your questions or comments.
+        </p>
+      </div>
+    </div>
+
+    <hr class="row-separator" />
+
+    <div class="info-row">
+      <div class="info-content">
+        <p>
+          To login or create an account, visit the
+          <a (click)="navigateToLogin()" class="text-link">Login</a>
+          page.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Login Section -->
+<div class="login-container" id="loginSection">
+  <p class="info-text">
+    Global Excel Offers Secure Online Access To Claim Information.<br>
+    Registration And Login Are Only Required If You Intend To Access<br>
+    More Personal Information About Your Claim.
+  </p>
+
+  <p class="register-link">
+    <a (click)="clickOnRegister()" style="cursor: pointer;">New User? Click here to Register.</a>
+  </p>
+
+  <p class="required-note">
+    <strong>* Indicates a required field</strong>
+  </p>
+
+  <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+    <label for="email">Login ID (Email address - required):</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      [(ngModel)]="form.email"
+    />
+  
+    <label for="password">Password (required):</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      required
+      [(ngModel)]="form.password"
+    />
+  
+    <!--
+    <p class="forgot-password">
+      <a routerLink="/forgot-password">Forgot Password?</a>
+    </p>
+    -->
+  
+    <div class="remember-me">
+      <input
+        type="checkbox"
+        id="remember"
+        name="remember"
+        [(ngModel)]="form.remember"
+      />
+      <label for="remember">Remember login ID</label>
+    </div>
+  
+    <button type="submit" [disabled]="!loginForm.valid">Login</button>
+  </form>
+  
+</div>

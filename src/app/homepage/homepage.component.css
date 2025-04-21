@@ -1,0 +1,80 @@
+/* Links */
+a {
+  text-decoration: none;
+  color: #585d63;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.text-link {
+  color: #0056b3;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+/* Intro Message */
+.intro p {
+  text-align: center;
+}
+
+/* Main Content Container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Heading Above Claim Info */
+.guide-heading {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #859494;
+  font-weight: 200;
+}
+
+/* Claim Info Table */
+.info-table {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  width: 600;
+  margin: 0 auto; 
+}
+
+.info-row {
+  padding: 20px;
+}
+
+.info-content {
+  width: 100%;
+}
+
+.info-content p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+}
+
+/* Row Divider */
+.row-separator {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .info-row {
+    text-align: center;
+  }
+}

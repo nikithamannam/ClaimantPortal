@@ -1,0 +1,30 @@
+<header class="d-flex justify-content-between align-items-center">
+    <h1 class="logo">
+      Claim<span class="text-primary">Portal</span>
+    </h1>
+  
+    <div class="header-container">
+      <div class="top-links" *ngIf="isLoggedIn; else guestLinks">
+        <span>Welcome {{ username }}</span>
+        <span>|</span>
+        <a routerLink="/dashboard">Edit Profile</a>
+        <span>|</span>
+        <a (click)="navigateToHomepage()">Home</a>
+        <span>|</span>
+        <a (click)="navigateToContact()">Contact Us</a>
+        <span>|</span>
+        <a (click)="logout()">Logout</a>
+      </div>
+  
+      <ng-template #guestLinks>
+        <div class="top-links">
+          <a (click)="navigateToHomepage()">Home</a>
+          <span>|</span>
+          <a routerLink="/login">Login</a>
+          <span>|</span>
+          <a (click)="navigateToContact()">Contact Us</a>
+        </div>
+      </ng-template>
+    </div>
+  </header>
+  

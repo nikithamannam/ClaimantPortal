@@ -1,0 +1,65 @@
+/* Logo styling */
+.logo {
+    font-size: 40px;
+    font-weight: 650;
+    color: rgb(27, 101, 140);
+  }
+  
+  .logo .text-primary {
+    color: grey !important;
+    font-weight: 350;
+  }
+  
+  /* Header layout */
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 50%;
+   
+
+  }
+  
+  /* Link groups */
+  .top-links,
+  .nav-links {
+    display: flex;
+    gap: 5px;
+  }
+
+  .nav-links{
+    font-size: 15;
+    width:  20 px;
+    height: 60px;
+  }
+  
+  .top-links {
+    margin-bottom: 8px;
+    font-weight: 10;
+  }
+  
+  /* General link styling */
+  a {
+    text-decoration: none;
+    color: #585d63;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Navigation link hover effect */
+  .nav-links a:hover {
+    background-color: rgb(38, 60, 83);
+    color: white;
+  }
+  
+  /* Sticky header */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+  }
