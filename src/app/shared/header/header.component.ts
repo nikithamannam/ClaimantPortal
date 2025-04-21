@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck} from '@angular/core';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 
@@ -8,13 +8,13 @@ import { NgIf } from '@angular/common';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements DoCheck {
   isLoggedIn = false;
   username = '';
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
+  ngDoCheck(): void {
     const user = localStorage.getItem('user');
     if (user) {
       const userObj = JSON.parse(user);

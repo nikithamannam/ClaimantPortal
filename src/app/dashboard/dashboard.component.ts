@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
+  imports:[NgIf],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
@@ -12,17 +15,9 @@ export class DashboardComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      this.user = JSON.parse(storedUser);
-      this.getUserDetails(this.user.email);
-    }
+    const user: any = JSON.parse(localStorage.getItem('user') || 'null');
+    
   }
 
-  getUserDetails(email: string) {
-    this.http.get(`https://your-api-url/api/Auth/GetUserByEmail?email=${email}`)
-      .subscribe((res: any) => {
-        this.user = res;
-      });
-  }
+  
 }

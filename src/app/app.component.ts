@@ -13,10 +13,7 @@ export class AppComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    localStorage.clear();
-    console.log('localStorage cleared on app init');
-  }
+  ngOnInit(): void {}
   //logout
   logout(){
     localStorage.clear();
