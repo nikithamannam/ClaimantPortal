@@ -41,4 +41,8 @@ export class HeaderComponent implements DoCheck {
   navigateToProfile(){
     this.router.navigate(['/profile']);
   }
+
+  navigateToLogin(){
+    this.router.navigate(['/login'],{fragment:'loginSection'});
+  }
 }
