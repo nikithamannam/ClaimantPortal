@@ -7,7 +7,7 @@
       <div class="top-links" *ngIf="isLoggedIn; else guestLinks">
         <span>Welcome {{ username }}</span>
         <span>|</span>
-        <a routerLink="/dashboard">Edit Profile</a>
+        <a (click)="navigateToProfile()">Edit Profile</a>
         <span>|</span>
         <a (click)="navigateToHomepage()">Home</a>
         <span>|</span>

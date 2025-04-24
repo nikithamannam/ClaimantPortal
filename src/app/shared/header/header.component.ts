@@ -37,4 +37,8 @@ export class HeaderComponent implements DoCheck {
   navigateToContact() {
     this.router.navigate(['/contact']);
   }
+
+  navigateToProfile(){
+    this.router.navigate(['/profile']);
+  }
 }

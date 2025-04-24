@@ -8,6 +8,7 @@ import { ContactComponent} from "./contact/contact.component";
 import { FaqComponent } from "./faq/faq.component";
 import { RegisterComponent } from "./register/register.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { ProfileComponent } from "./profile/profile.component";
 
 
 const routes: Routes=[
@@ -21,6 +22,7 @@ const routes: Routes=[
     { path: 'register', component: RegisterComponent},
     { path: 'homepage', component: HomepageComponent},
     {path: 'dashboard', component: DashboardComponent},
+    { path: 'profile', component: ProfileComponent},
     // Default route
 ];
 

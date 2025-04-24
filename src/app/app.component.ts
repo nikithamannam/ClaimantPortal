@@ -11,6 +11,7 @@ import { HeaderComponent } from './shared/header/header.component';
 })
 export class AppComponent implements OnInit {
 
+  title = 'claimantPortal';
   constructor(private router: Router) {}
 
   ngOnInit(): void {}

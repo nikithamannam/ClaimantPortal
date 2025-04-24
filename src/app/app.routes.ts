@@ -7,6 +7,7 @@ import { ContactComponent} from "./contact/contact.component";
 import { FaqComponent } from "./faq/faq.component";
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
     { path: '', component: HomepageComponent },
@@ -17,6 +18,7 @@ export const routes: Routes = [
     { path: 'faq', component: FaqComponent },*/
      {path : 'dashboard', component: DashboardComponent},
     { path: 'contact', component: ContactComponent },
+    { path: 'profile', component: ProfileComponent},
     { path: '**', redirectTo: '' }
   ];
   
