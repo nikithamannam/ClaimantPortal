@@ -26,7 +26,7 @@ export class AuthService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return this.http.post(
-      `${this.baseUrl}/EmergencyTravelAssistance`,
+      `${this.baseUrl}/ContactUsQuery`,
       contactData,
       { headers }
     );

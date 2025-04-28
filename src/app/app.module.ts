@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/Claimportal.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -33,9 +34,10 @@ import { AuthService } from './services/Claimportal.service';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    FormsModule,           // ✅ Enables ngModel
-    ReactiveFormsModule,   // Optional: For reactive forms
-    HttpClientModule       // ✅ Enables HttpClient
+    FormsModule,          
+    ReactiveFormsModule,   
+    HttpClientModule,
+    CommonModule       
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

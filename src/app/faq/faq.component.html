@@ -1,1 +1,31 @@
-<p>faq works!</p>
+<div class="banner">
+    <h2>FAQ</h2>
+</div>
+<h3>Travelling and Assistance:</h3>
+
+<div class="accordion">
+  <div class="item" *ngFor="let faq of travelAndAsssit" (click)="toggleItem(faq)">
+    <div class="question">
+    <div class="icon">{{ faq.isActive ? '−' : '+' }}</div> &nbsp;
+      {{ faq.question }}
+      
+    </div>
+    <div class="answer" [ngClass]="{ 'active': faq.isActive }">
+      {{ faq.answer }}
+    </div>
+  </div>
+</div>
+<h3>Claim:</h3>
+
+<div class="accordion">
+    <div class="item" *ngFor="let faq of claim" (click)="toggleItem(faq)">
+      <div class="question">
+       
+        <div class="icon">{{ faq.isActive ? '−' : '+' }}</div> &nbsp;
+        {{ faq.question }}
+      </div>
+      <div class="answer" [ngClass]="{ 'active': faq.isActive }">
+        {{ faq.answer }}
+      </div>
+    </div>
+  </div>

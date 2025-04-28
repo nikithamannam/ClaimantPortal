@@ -16,8 +16,9 @@
       <option value="feedback">Feedback and Compliments</option>
       <option value="billing">Billings</option>
       <option value="complaint">Complaints</option>
+    -->
       <option value="appeal">Appeals</option>
-      -->
+    
     </select>
   </form>
 
@@ -107,17 +108,17 @@
 
       <div class="form-row">
         <label for="firstName">First Name: *</label>
-        <input type="text" id="firstName" name="firstName" required ngModel>
+        <input type="text" id="firstName" name="firstName" required [(ngModel)]="contactFormData.firstName">
       </div>
 
       <div class="form-row">
         <label for="lastName">Last Name: *</label>
-        <input type="text" id="lastName" name="lastName" required ngModel>
+        <input type="text" id="lastName" name="lastName" required [(ngModel)]="contactFormData.lastName">
       </div>
 
       <div class="form-row">
         <label for="dob">Date of Birth: *</label>
-        <input type="date" id="dob" name="dob" required ngModel>
+        <input type="date" id="dob" name="dob" required [(ngModel)]="contactFormData.dob">
       </div>
 
       <div class="form-row">
@@ -127,12 +128,12 @@
 
       <div class="form-row">
         <label for="email">Email: *</label>
-        <input type="email" id="email" name="email" required ngModel>
+        <input type="email" id="email" name="email" required [(ngModel)]="contactFormData.email">
       </div>
 
       <div class="form-row">
         <label for="primaryPhone">Phone Number (where we can reach you): *</label>
-        <input type="tel" id="primaryPhone" name="primaryPhone" required ngModel>
+        <input type="tel" id="primaryPhone" name="primaryPhone" required [(ngModel)]="contactFormData.primaryPhone">
       </div>
 
       <div class="form-row">

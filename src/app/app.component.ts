@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
   navigateToContact() {
     this.router.navigate(['/contact']);
   }
-/*
+
   navigateToStartClaim() {
     this.router.navigate(['/start-claim']);
   }
@@ -49,5 +49,5 @@ export class AppComponent implements OnInit {
   navigateToClaimStatus() {
     this.router.navigate(['/claim-status']);
   }
-*/
+
 }

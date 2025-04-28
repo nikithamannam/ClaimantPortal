@@ -13,10 +13,10 @@ export const routes: Routes = [
     { path: '', component: HomepageComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent},
-    /*{ path: 'start-claim', component: StartClaimComponent },
+    { path: 'start-claim', component: StartClaimComponent },
     { path: 'submit-documents', component: SubmitDocumentsComponent },
-    { path: 'faq', component: FaqComponent },*/
-     {path : 'dashboard', component: DashboardComponent},
+    { path: 'faq', component: FaqComponent },
+    {path : 'dashboard', component: DashboardComponent},
     { path: 'contact', component: ContactComponent },
     { path: 'profile', component: ProfileComponent},
     { path: '**', redirectTo: '' }

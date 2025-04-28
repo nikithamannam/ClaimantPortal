@@ -5,26 +5,42 @@
   
     <div class="header-container">
       <div class="top-links" *ngIf="isLoggedIn; else guestLinks">
-        <span>Welcome {{ username }}</span>
-        <span>|</span>
-        <a (click)="navigateToProfile()">Edit Profile</a>
-        <span>|</span>
-        <a (click)="navigateToHomepage()">Home</a>
-        <span>|</span>
-        <a (click)="navigateToContact()">Contact Us</a>
-        <span>|</span>
-        <a (click)="logout()">Logout</a>
+        <div class="user-links">
+          <span>Welcome Nikitha </span>
+          <span>|</span>
+          <a (click)="navigateToHomepage()">Home </a>
+          <span>|</span>
+          <a (click)="navigateToProfile()">Edit Profile </a>
+          <span>|</span>
+          <a (click)="navigateToContact()">Contact Us </a>
+          <span>|</span>
+          <a (click)="logout()">Logout </a>
+        </div>
+      
+        <div class="menu-bar">
+          <a (click)="navigateToStartClaim()" class="menu-item">Start a Claim</a>
+          <a (click)="navigateToSubmitDocuments()" class="menu-item">Submit Documents</a> &nbsp;
+          <a (click)="navigateToFAQ()" class="menu-item">FAQ</a>
+        </div>
       </div>
+      
   
       <ng-template #guestLinks>
         <div class="top-links">
-          <a (click)="navigateToHomepage()">Home</a>
+          <a (click)="navigateToHomepage()">Home </a>
           <span>|</span>
-          <a (click)="navigateToLogin()">Login</a>
+          <a (click)="navigateToLogin()"> Login </a>
           <span>|</span>
-          <a (click)="navigateToContact()">Contact Us</a>
+          <a (click)="navigateToContact()"> Contact Us</a>
+        </div>
+        <div class="menu-bar">
+          <a (click)="navigateToStartClaim()" class="menu-item">Start a Claim</a> 
+          <a (click)="navigateToSubmitDocuments()" class="menu-item">Submit Documents</a>&nbsp;
+          <a (click)="navigateToFAQ()" class="menu-item">FAQ</a>
         </div>
       </ng-template>
     </div>
+    
+    
   </header>
   
