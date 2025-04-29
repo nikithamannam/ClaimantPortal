@@ -10,15 +10,18 @@ import { NgIf } from '@angular/common';
 })
 export class HeaderComponent implements DoCheck {
   isLoggedIn = false;
-  username = '';
+  userData: any={
+    firstN :' ',
+    lastN :' '
+  } ;
 
   constructor(private router: Router) {}
 
   ngDoCheck(): void {
-    const user = localStorage.getItem('user');
+    const user: any = JSON.parse(localStorage.getItem('user') || 'null');
     if (user) {
-      const userObj = JSON.parse(user);
-      this.username = userObj.FirstName;
+      this.userData.firstN = user.firstName || ' ';
+      this.userData.lastN  =user.lastName || ' ';
       this.isLoggedIn = true;
     }
   }
@@ -26,7 +29,6 @@ export class HeaderComponent implements DoCheck {
   logout(): void {
     localStorage.removeItem('user');
     this.isLoggedIn = false;
-    this.username = '';
     this.router.navigate(['/login']);
   }
 
@@ -56,5 +58,9 @@ export class HeaderComponent implements DoCheck {
   
   navigateToFAQ() {
     this.router.navigate(['/faq']);
+  }
+
+  navigateToDashboard(){
+    this.router.navigate(['/dashboard']);
   }
 }
