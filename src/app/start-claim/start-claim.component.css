@@ -1,0 +1,23 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    width: 220px; /* Adjust as needed */
+    font-weight: 500;
+  }
+  
+  .form-group select {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+  }
+  

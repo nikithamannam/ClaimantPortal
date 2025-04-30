@@ -1,3 +1,51 @@
 <div class="banner">
     <h2>START A CLAIM</h2>
 </div>
+<p>* Indicates a required field</p>
+
+<div class="container">
+    <form>
+      <div class="form-group">
+        <label for="topic">Select type of claim:</label>
+        <select id="topic" [(ngModel)]="selectedTopic" name="selectedTopic">
+          <option value="" disabled selected>Select a topic</option>
+          <option value="1">Emergency Medical Travel</option>
+          <option value="2">Visitors to Canada</option>
+          <option value="3">Trip Cancellation/Interruptio</option>
+          <option value="4">Baggage/Flight Delay</option>
+          <option value="5">Hotel/Motel Burglary</option>
+          <option value="6">Student</option>
+          <option value="7">Expatriate</option>
+          <option value="8">Inpatriate</option>
+        </select>
+      </div>
+    </form>
+  
+    <div *ngIf="selectedTopic === '1'">
+      <form>
+        <div class="form-group">
+          <label for="traveling">Are you currently travelling? *</label>
+          <select id="traveling">
+            <option value="true">True</option>
+            <option value="false">False</option>
+          </select>
+        </div>
+      </form>
+      <form>
+        <div class="form-group">
+          <label for="traveling">Are you seeking or planning to seek medical attention? </label>
+          <select id="traveling" [(ngModel)]= "isSeekigMedicalAttention">
+            <option value="true">True</option>
+            <option value="false">False</option>
+          </select>
+        </div>
+        <div *ngIf="isSeekigMedicalAttention === 'true">
+            <p>If you are currently travelling, seeking treatment, or planning to seek treatment please contact us at +1-819-780-1999, for toll-free number+1-855-237-6911</p>
+        </div>
+        <div *ngIf ="isSeekigMedicalAttention ==='false">
+            <p>false</p>
+        </div>
+      </form>
+    </div>
+  </div>
+  
