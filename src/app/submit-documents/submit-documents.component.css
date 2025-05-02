@@ -1,0 +1,145 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+}
+
+.container {
+  margin: 80px auto;
+  padding: 20px;
+  background-color: #fff;
+  max-width: 1000px;
+}
+
+.links {
+  text-align: center;
+}
+
+.links a {
+  color: blue;
+}
+
+.links a:hover {
+  cursor: pointer;
+}
+
+.form-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.claim-form .form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+label {
+  width: 300px;
+  font-weight: 500;
+  color: #222;
+  text-align: right;
+  padding-left: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #999;
+  border-radius: 2px;
+  max-width: 800px;
+}
+
+.textarea-row textarea {
+  margin-left: 10px;
+  height: 100px;
+  width: 500px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #999;
+  border-radius: 2px;
+  resize: vertical;
+}
+
+.inline-options {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.required-msg {
+  font-size: 13px;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+.dob-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.dob-wrapper input {
+  flex: 1;
+}
+
+.calendar-btn {
+  background-color: #eee;
+  border: 1px solid #999;
+  padding: 10px;
+  margin-left: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 2px;
+}
+
+/* Document Upload Section */
+.documents-container {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  border: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* GAP of 20px between file input rows */
+}
+
+.documents-container .header {
+  background-color: #f5f5f5;
+  padding: 12px 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.documents-container .header h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+}
+
+.documents-container .content {
+  padding: 10px 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.documents-container .content p {
+  margin: 10px 0 20px 0;
+}
+
+.files {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}

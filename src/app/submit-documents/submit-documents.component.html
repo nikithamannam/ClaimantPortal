@@ -1,3 +1,172 @@
 <div class="banner">
-    <h2>SUBMIT DOCUMENTS</h2>
+  <h2>SUBMIT DOCUMENTS</h2>
+</div>
+
+<div class="container">
+  <p>
+    Use this form to submit documents. We ask that you do not upload the same documents more than once. If you have already submitted a document to us, we have received it and we are working on it. The submission of duplicates leads to processing delays. Thank you for your understanding.
+  </p>
+
+  <p class="links">
+    Are you starting a new claim? Click <a (click)="navigateToStartClaim()">here</a>
+  </p>
+
+  <div class="form-wrapper">
+    <p>* Indicates a required field</p>
+
+    <form class="claim-form" #submitForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="submit-type"><b>I need to Submit: *</b></label>
+        <select id="submit-type" [(ngModel)]="formData.submitType" name="submitType" required>
+          <option value="" disabled selected></option>
+          <option value="1">Completed claim forms for a completed claim</option>
+          <option value="2">Documents for an existing claim</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="first-name">First Name: *</label>
+        <input id="first-name" name="firstName" type="text" required [(ngModel)]="formData.firstName" />
+      </div>
+
+      <div class="form-group">
+        <label for="last-name">Last Name: *</label>
+        <input id="last-name" name="lastName" type="text" required [(ngModel)]="formData.lastName" />
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth: *</label>
+        <input id="dob" name="dob" type="date" required [(ngModel)]="formData.dob" />
+      </div>
+
+      <div class="form-group">
+        <label for="claim-number">Claim Number: *</label>
+        <input id="claim-number" name="claimNumber" type="text" required [(ngModel)]="formData.claimNumber" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email: *</label>
+        <input id="email" name="email" type="email" required [(ngModel)]="formData.email" />
+      </div>
+
+      <div class="form-group">
+        <label for="phone-main">Phone Number (where we can reach you): *</label>
+        <input id="phone-main" name="primaryPhone" type="tel" required [(ngModel)]="formData.primaryPhone" />
+      </div>
+
+      <div class="form-group">
+        <label for="phone-other">Phone Number (other):</label>
+        <input id="phone-other" name="otherPhone" type="tel" [(ngModel)]="formData.otherPhone" />
+      </div>
+
+      <div class="form-group radio-group">
+        <label><b>What type of claim is this for? *</b></label><br />
+        <label class="custom-radio">
+          <input type="radio" [(ngModel)]="formData.claimType" name="claimType" value="medical" required />
+          <span class="checkmark"></span>
+          Medical
+        </label>
+        <label class="custom-radio">
+          <input type="radio" [(ngModel)]="formData.claimType" name="claimType" value="non-medical" />
+          <span class="checkmark"></span>
+          Non-Medical
+        </label>
+      </div>
+
+      <!-- Conditional Travel Questions -->
+      <div *ngIf="formData.claimType === 'medical'" class="form-group radio-group">
+        <label><b>Are you currently at travel? *</b></label><br />
+        <label>
+          <input type="radio" [(ngModel)]="formData.atTravel" name="atTravel" [value]="true" required />
+          Yes
+        </label>
+        <label>
+          <input type="radio" [(ngModel)]="formData.atTravel" name="atTravel" [value]="false" />
+          No
+        </label>
+      </div>
+
+      <div *ngIf="formData.atTravel === true && formData.claimType === 'medical'" class="form-group radio-group">
+        <label><b>Are you actively seeking medical care? *</b></label><br />
+        <label>
+          <input type="radio" [(ngModel)]="formData.seekingMedicalCare" name="seekingMedicalCare" [value]="true" required />
+          Yes
+        </label>
+        <label>
+          <input type="radio" [(ngModel)]="formData.seekingMedicalCare" name="seekingMedicalCare" [value]="false" />
+          No
+        </label>
+      </div>
+
+      <div *ngIf="formData.claimType === 'non-medical'" class="form-group radio-group">
+        <label><b>Is your non-medical claim related to Trip Cancellation, Trip Interruption, Flight Delay or Baggage? *</b></label><br />
+        <label>
+          <input type="radio" [(ngModel)]="formData.atTravel" name="atTravelNonMedical" [value]="true" required />
+          Yes
+        </label>
+        <label>
+          <input type="radio" [(ngModel)]="formData.atTravel" name="atTravelNonMedical" [value]="false" />
+          No
+        </label>
+      </div>
+
+      <div class="form-row textarea-row">
+        <label for="comments">Your question or comments (Maximum 2000 characters): *</label>
+        <textarea id="comments" name="comments" maxlength="2000" required [(ngModel)]="formData.comments"></textarea>
+      </div>
+
+      <!-- Claim Type Dropdown -->
+      <div class="form-group">
+        <label for="claimTypeSelect">Claim type:</label>
+        <select id="claimTypeSelect" [(ngModel)]="claimType" name="claimTypeDropdown">
+          <option value="" disabled selected></option>
+          <option value="1">Emergency Medical Travel</option>
+          <option value="2">Visitors to Canada</option>
+          <option value="3">Trip Cancellation/Interruption</option>
+          <option value="4">Baggage/Flight Delay</option>
+          <option value="5">Hotel/Motel Burglary</option>
+          <option value="6">Student</option>
+          <option value="7">Expatriate</option>
+          <option value="8">Inpatriate</option>
+        </select>
+      </div>
+
+      <!-- Document Upload Section -->
+      <div class="documents-container" *ngIf="claimType !== ''">
+        <div class="header">
+          <h2>SUPPORTING DOCUMENTS ·</h2>
+        </div>
+        <div class="content">
+          <p>Please use the labeled upload field to submit documents you haven't previously provided.</p>
+          <p>Max 10 files, total max size: 50MB. Accepted types: pdf, tiff, png, jpeg, jpg, gif, bmp, doc, docx, rtf, txt, odt.</p>
+          <p>Please remove passwords from protected files before uploading.</p>
+
+          <div *ngIf="formData.submitType === '1'" class="form-row">
+            <label for="claimForm" class="files">1. Claim Form</label>
+            <input type="file" id="claimForm" name="claimForm" (change)="onFileChange($event)" multiple accept=".doc,.pdf,.zip,.docx,.jpg,.jpeg,.gif,.tiff,.bmp,.png,.txt" />
+          </div>
+
+          <div *ngIf="formData.submitType === '2'" class="form-wrapper">
+
+            <!-- Credit Card Statement - common to all -->
+            <div class="form-row">
+              <label for="creditCard" class="files">1. CREDIT CARD STATEMENT</label>
+              <input type="file" id="creditCard" name="creditCard" (change)="onFileChange($event)" multiple />
+            </div>
+          
+            <!-- Dynamic claim-specific files -->
+            <ng-container *ngFor="let doc of claimDocuments[claimType]; let i = index">
+              <div class="form-row">
+                <label class="files">{{ i + 2 }}. {{ doc }}</label>
+                <input type="file" (change)="onFileChange($event)" multiple />
+              </div>
+            </ng-container>
+          </div>
+          
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="!submitForm.valid">Submit</button>
+    </form>
+  </div>
 </div>
