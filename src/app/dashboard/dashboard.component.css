@@ -1,0 +1,35 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    display: flex;
+  }
+  
+  input[type='text'] {
+    width: 100%;
+    padding: 8px;
+  }
+  
+  .policy-message,
+  .status-message {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+  }
+  
+  .policy-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .policy-table th,
+  .policy-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  

@@ -82,10 +82,10 @@ a:hover {
     font-size: 14px;
   }
   
-  .textarea-row textarea {
+ .textarea-row textarea {
     height: 100px;
   }
-  
+   
   button {
     padding: 10px 20px;
     background-color: #0078d4;

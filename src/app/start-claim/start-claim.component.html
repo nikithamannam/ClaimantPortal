@@ -6,8 +6,8 @@
 <div class="container">
     <form>
       <div class="form-group">
-        <label for="topic">Select type of claim:</label>
-        <select id="topic" [(ngModel)]="selectedTopic" name="selectedTopic">
+        <label for="claimType">Select type of claim:</label>
+        <select id="claimType" [(ngModel)]="selectedTopic" name="selectedTopic">
           <option value="" disabled selected>Select a topic</option>
           <option value="1">Emergency Medical Travel</option>
           <option value="2">Visitors to Canada</option>
@@ -26,6 +26,7 @@
         <div class="form-group">
           <label for="traveling">Are you currently travelling? *</label>
           <select id="traveling">
+            <option value="" disabled selected></option>
             <option value="true">True</option>
             <option value="false">False</option>
           </select>
@@ -34,15 +35,16 @@
       <form>
         <div class="form-group">
           <label for="traveling">Are you seeking or planning to seek medical attention? </label>
-          <select id="traveling" [(ngModel)]= "isSeekigMedicalAttention">
+          <select id="medicalAttention" [(ngModel)]="isSeekingMedicalAttention" name="medicalAttention">
+            <option value="" disabled selected></option>
             <option value="true">True</option>
             <option value="false">False</option>
           </select>
         </div>
-        <div *ngIf="isSeekigMedicalAttention === 'true">
+        <div *ngIf="isSeekingMedicalAttention === 'true'">
             <p>If you are currently travelling, seeking treatment, or planning to seek treatment please contact us at +1-819-780-1999, for toll-free number+1-855-237-6911</p>
         </div>
-        <div *ngIf ="isSeekigMedicalAttention ==='false">
+        <div *ngIf ="isSeekingMedicalAttention ==='false'">
             <p>false</p>
         </div>
       </form>

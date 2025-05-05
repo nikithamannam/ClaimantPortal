@@ -1,11 +1,129 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-submit-documents',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './submit-documents.component.html',
-  styleUrl: './submit-documents.component.css'
+  styleUrls: ['./submit-documents.component.css'],
 })
-export class SubmitDocumentsComponent {
+export class SubmitDocumentsComponent implements OnInit {
 
+  constructor (private router:Router){}
+claimType: string='';
+
+  formData: any = {
+    submitType: '',
+    firstName: '',
+    lastName: '',
+    dob: '',
+    claimNumber: '',
+    email: '',
+    primaryPhone: '',
+    otherPhone: '',
+    claimTypeMedical: false,
+    claimTypeNonMedical: false,
+    atTravel: null,
+    seekingMedicalCare: null,
+    comments:''
+  };
+  claimDocuments: { [key: string]: string[] } = {
+    '1': [
+      'ITEMIZED RECEIPTS FOR ALL BILLS AND INVOICES',
+      'PROOF OF PAYMENT',
+      'MEDICAL RECORDS INCLUDING COMPLETE DIAGNOSIS BY ATTENDING PHYSICIAN',
+      'PROOF OF TRAVEL',
+      'POLICE ACCIDENT REPORT - MVA INCLUDING REPORT NUMBER (IF APPLICABLE)',
+      'PHARMACY RECEIPT',
+      'PHARMACY TRANSACTION RECEIPT',
+      'PROOF OF ARRIVAL TO CANADA',
+      'OTHER SUPPORTING DOCUMENTS'
+    ],
+    '2': [
+      'ITEMIZED RECEIPTS FOR ALL BILLS AND INVOICES',
+      'PROOF OF PAYMENT',
+      'MEDICAL RECORDS INCLUDING COMPLETE DIAGNOSIS BY ATTENDING PHYSICIAN',
+      'PROOF OF TRAVEL',
+      'POLICE ACCIDENT REPORT - MVA INCLUDING REPORT NUMBER (IF APPLICABLE)',
+      'PHARMACY RECEIPT',
+      'PHARMACY TRANSACTION RECEIPT',
+      'OTHER SUPPORTING DOCUMENTS'
+    ],
+    '3': [
+      'MEDICAL CERTIFICATE',
+      'DEATH CERTIFICATE',
+      'BOOKING INVOICE',
+      'AIRLINE TICKET',
+      'PROOF OF CANCELLATION',
+      'REFUND STATEMENT',
+      'PROOF OF EVENT',
+      'PROOF OF PAYMENT',
+      'PROOF OF PAYMENT - INTERRUPTION',
+      'NEW BOARDING PASSES',
+      'OTHER SUPPORTING DOCUMENTS'
+    ],
+    '4': [
+      'BAGGAGE CONTENTS LIST',
+      'DAMAGED LUGGAGE REPAIR RECEIPT',
+      'PROPERTY IRREGULARITY REPORT',
+      'PROOF OF SETTLEMENT',
+      'CUSTODY REPORT',
+      'PROOF OF DELIVERY',
+      'RECEIPTS',
+      'FLIGHT DELAY REPORT',
+      'OTHER SUPPORTING DOCUMENTS'
+    ],
+    '5': [
+      'INVOICE',
+      'ACCOUNT COPY',
+      'POLICE REPORT',
+      'RECEIPTS',
+      'OTHER SUPPORTING DOCUMENTS'
+    ],
+    '6': ['OTHER SUPPORTING DOCUMENTS'],
+    '7': ['OTHER SUPPORTING DOCUMENTS'],
+    '8': ['OTHER SUPPORTING DOCUMENTS']
+  };
+  
+  
+
+  ngOnInit(): void {
+    const user = JSON.parse(localStorage.getItem('user') || 'null');
+
+    if (user) {
+      this.formData.firstName = user.firstName || '';
+      this.formData.lastName = user.lastName || '';
+      this.formData.email = user.email || '';
+      this.formData.primaryPhone = user.phoneNumber || '';
+      this.formData.dob = user.dateOfBirth ? user.dateOfBirth.split('T')[0] : '';
+    }
+  }
+
+  onSubmit(): void {
+    console.log('Submitted data:', this.formData);
+    alert('Documents submitted successfully!');
+  }
+  onFileChange(event: any) {
+    const files = event.target.files;
+    if (files.length > 10) {
+      alert("You can only upload a maximum of 10 files.");
+      return;
+    }
+
+    let totalSize = 0;
+    for (let i = 0; i < files.length; i++) {
+      totalSize += files[i].size;
+    }
+
+    if (totalSize > 50 * 1024 * 1024) {
+      alert("Combined file size cannot exceed 50 MB.");
+    }
+  }
+
+  navigateToStartClaim() {
+    this.router.navigate(['/start-claim']);
+  }
 }

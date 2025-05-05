@@ -1,3 +1,36 @@
 <div class="banner">
     <h2>LEAD INSURED INFORMATION</h2>
-</div>
+  </div>
+
+<div class="container">
+  
+    <!-- Prefilled Profile Form -->
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" [(ngModel)]="userData.firstName" name="firstName" />
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" [(ngModel)]="userData.lastName" name="lastName" />
+    </div>
+  
+  
+    <h2>List of Policies</h2>
+    <div class="policy-message">
+      Policy details will be added here once a claim has been validated.
+    </div>
+  
+    <table class="policy-table">
+      <thead>
+        <tr>
+          <th>Policy Number</th>
+          <th>Product Name</th>
+        </tr>
+      </thead>
+    </table>
+<br>
+    <h2>Select a Claim to View the Status</h2>
+    <div class="status-message">
+      If you are looking for a claim that you have submitted and it’s not here, it may still be in processing OR the
+      information you provided when you registered may not match with the information you submitted with your claim.
+    </div>
+  </div>
+  
