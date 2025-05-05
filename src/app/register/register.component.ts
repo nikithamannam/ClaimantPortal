@@ -31,36 +31,29 @@ export class RegisterComponent {
     terms: false
   };
   
-  finishRegistration() {
-      console.log("Clicked FINISH!");
-      debugger;
-    // Additional client-side validations (if not fully covered by template validations)
-    if (this.form.email !== this.form.emailConfirm) {
-      alert("Emails do not match.");
-      return;
+  finishRegistration(regForm: any) {
+    // Mark all controls as touched to trigger validation messages
+    Object.keys(regForm.controls).forEach(field => {
+      const control = regForm.controls[field];
+      control.markAsTouched({ onlySelf: true });
+    });
+  
+    if (regForm.invalid || this.form.email !== this.form.emailConfirm || this.form.password !== this.form.confirmPassword) {
+      return; // Stop if invalid
     }
-
-    if (this.form.password !== this.form.confirmPassword) {
-      alert("Passwords do not match.");
-      return;
-    }
-
-    if (!this.form.terms) {
-      alert("You must accept the terms and conditions.");
-      return;
-    }
+  
+    const dobString = `${this.form.year}-${this.pad(this.form.month)}-${this.pad(this.form.day)}`;
+    const dob = new Date(dobString);
+  
+    const registrationPayload = {
+      firstName: this.form.firstName,
+      lastName: this.form.lastName,
+      email: this.form.email,
+      phoneNumber: this.form.phone,
+      password: this.form.password,
+      dateOfBirth: dob.toISOString()
+    };
     
-  const dobString = `${this.form.year}-${this.pad(this.form.month)}-${this.pad(this.form.day)}`;
-  const dob = new Date(dobString);
-
-  const registrationPayload = {
-    firstName: this.form.firstName,
-    lastName: this.form.lastName,
-    email: this.form.email,
-    phoneNumber: this.form.phone,
-    password: this.form.password,
-    dateOfBirth: dob.toISOString()
-  };
   
     this.authService.register(registrationPayload).subscribe({
       next: (res) => {
@@ -74,11 +67,15 @@ export class RegisterComponent {
       }
     });
     
-  
+    
   }
   pad(value: string | number): string {
-    return value.toString().padStart(2, '0');
+    const num = typeof value === 'string' ? parseInt(value, 10) : value;
+    return num < 10 ? `0${num}` : `${num}`;
   }
+  
+  
+  
 
 
 }

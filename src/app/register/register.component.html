@@ -1,4 +1,4 @@
-<form #regForm="ngForm" (ngSubmit)="finishRegistration()">
+<form #regForm="ngForm" (ngSubmit)="finishRegistration(regForm)">
     <div class="banner">
       <h2>REGISTRATION WIZARD</h2>
     </div>
@@ -144,21 +144,6 @@
           </div>
         </div>
       </div>
-  
-     <!-- Login ID (Insured ID) -->
-
-<!--     <div class="form-row">
-        <div class="form-label">
-          <label for="loginId">Login ID (Insured ID): *</label>
-        </div>
-        <div class="form-input">
-          <input type="text" id="loginId" name="loginId" [(ngModel)]="form.loginId" required #loginId="ngModel">
-          <div class="error" *ngIf="loginId.touched && loginId.invalid">
-            <div *ngIf="loginId.errors?.['required']">Login ID is required.</div>
-          </div>
-        </div>
-        </div> 
--->
 
       <!-- First Name -->
       <div class="form-row">
@@ -238,12 +223,7 @@
             <button type="reset" class="btn btn-reset">RESET</button>
             <button
               type="submit"
-              class="btn btn-finish"
-              [disabled]="
-                regForm.invalid || 
-                form.email !== form.emailConfirm || 
-                form.password !== form.confirmPassword
-              ">
+              class="btn btn-finish">
               FINISH
             </button>
           </div>
