@@ -1,0 +1,13 @@
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;    
+}
+.form-row {
+    display: flex;
+    gap: 12px; /* Adds space between children */
+    margin-bottom: 20px;
+  }
+  

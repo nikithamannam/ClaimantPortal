@@ -3,15 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { HomepageComponent } from './homepage/homepage.component'; 
-import { LoginComponent } from './login/login.component';
-import { StartClaimComponent } from './start-claim/start-claim.component';
-import { SubmitDocumentsComponent } from './submit-documents/submit-documents.component';
-import { FaqComponent } from './faq/faq.component';
-import { ContactComponent } from './contact/contact.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfileComponent } from './profile/profile.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,16 +13,7 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent,
-    LoginComponent,
-    StartClaimComponent,
-    SubmitDocumentsComponent,
-    FaqComponent,
-    ContactComponent,
-    RegisterComponent,
-    ProfileComponent,
-    DashboardComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -8,34 +8,34 @@
         <div class="user-links">
           <span>Welcome {{userData.firstN}} {{userData.lastN}} </span>
           <span>|</span>
-          <a (click)="navigateToProfile()">Edit Profile </a>
+          <a (click)="nav.toProfile()">Edit Profile </a>
           <span>|</span>
-          <a (click)="navigateToContact()">Contact Us </a>
+          <a (click)="nav.toContactUs()">Contact Us </a>
           <span>|</span>
           <a (click)="logout()">Logout </a>
         </div>
       
         <div class="menu-bar">
-          <a (click)="navigateToDashboard()" class ="menu-item">Home </a>
-          <a (click)="navigateToStartClaim()" class="menu-item">Start a Claim</a>
-          <a (click)="navigateToSubmitDocuments()" class="menu-item">Submit Documents</a> &nbsp;
-          <a (click)="navigateToFAQ()" class="menu-item">FAQ</a>
+          <a (click)="nav.toDashboard()" class ="menu-item">Home </a>
+          <a (click)="nav.toStartClaim()" class="menu-item">Start a Claim</a>
+          <a (click)="nav.toSubmitDocuments()" class="menu-item">Submit Documents</a> &nbsp;
+          <a (click)="nav.toFAQ()" class="menu-item">FAQ</a>
         </div>
       </div>
       
   
       <ng-template #guestLinks>
         <div class="top-links">
-          <a (click)="navigateToHomepage()">Home </a>
+          <a (click)="nav.toHome()">Home </a>
           <span>|</span>
-          <a (click)="navigateToLogin()"> Login </a>
+          <a (click)="nav.toLogin()"> Login </a>
           <span>|</span>
-          <a (click)="navigateToContact()"> Contact Us</a>
+          <a (click)="nav.toContact()"> Contact Us</a>
         </div>
         <div class="menu-bar">
-          <a (click)="navigateToStartClaim()" class="menu-item">Start a Claim</a> 
-          <a (click)="navigateToSubmitDocuments()" class="menu-item">Submit Documents</a>&nbsp;
-          <a (click)="navigateToFAQ()" class="menu-item">FAQ</a>
+          <a (click)="nav.toStartClaim()" class="menu-item">Start a Claim</a>
+          <a (click)="nav.toSubmitDocuments()" class="menu-item">Submit Documents</a> &nbsp;
+          <a (click)="nav.toFAQ()" class="menu-item">FAQ</a>
         </div>
       </ng-template>
     </div>

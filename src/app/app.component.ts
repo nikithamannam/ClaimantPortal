@@ -21,33 +21,4 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/login'],{fragment: 'loginSection'});
   }
 
-  // Navigation methods
-  navigateToLogin() {
-    this.router.navigate(['/login'], { fragment: 'loginSection' });
-  }
-
-  navigateToHomepage() {
-    this.router.navigate(['/homepage']);
-  }
-
-  navigateToContact() {
-    this.router.navigate(['/contact']);
-  }
-
-  navigateToStartClaim() {
-    this.router.navigate(['/start-claim']);
-  }
-
-  navigateToSubmitDocuments() {
-    this.router.navigate(['/submit-documents']);
-  }
-
-  navigateToFAQ() {
-    this.router.navigate(['/faq']);
-  }
-
-  navigateToClaimStatus() {
-    this.router.navigate(['/claim-status']);
-  }
-
 }

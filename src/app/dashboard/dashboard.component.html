@@ -9,28 +9,87 @@
       <label for="firstName">First Name:</label>
       <input type="text" id="firstName" [(ngModel)]="userData.firstName" name="firstName" readonly/> &nbsp;
       <label for="lastName">Last Name:</label>
-      <input type="text" id="lastName" [(ngModel)]="userData.lastName" name="lastName" readonly/>
+      <input type="text" id="lastName" [(ngModel)]="userData.lastName" name="lastName" />
     </div>
   
   
-    <h2>List of Policies</h2>
-    <div class="policy-message">
-      Policy details will be added here once a claim has been validated.
-    </div>
-  
-    <table class="policy-table">
-      <thead>
+    <div class="section">
+      <h2>List of Policies</h2>
+      <p>Policy details will be added here once a claim has been validated.</p>
+      <table>
         <tr>
           <th>Policy Number</th>
           <th>Product Name</th>
         </tr>
-      </thead>
-    </table>
-<br>
-    <h2>Select a Claim to View the Status</h2>
-    <div class="status-message">
-      If you are looking for a claim that you have submitted and it’s not here, it may still be in processing OR the
-      information you provided when you registered may not match with the information you submitted with your claim.
+        <tr>
+          <td>POL123456789</td>
+          <td>Comprehensive Health Plan</td>
+        </tr>
+        <tr>
+          <td>POL987654321</td>
+          <td>Dental Insurance Basic</td>
+        </tr>
+        <tr>
+          <td>POL555888999</td>
+          <td>Travel Medical Coverage</td>
+        </tr>
+        <tr>
+          <td>POL321654987</td>
+          <td>Vision Plus Plan</td>
+        </tr>
+      </table>
     </div>
-  </div>
+  
+    <div class="section">
+      <h2>Select a Claim to View the Status</h2>
+      <table>
+        <tr>
+          <th>Claim Number</th>
+          <th>Policy Number</th>
+          <th>Submitted Date</th>
+          <th>Status</th>
+          <th>Amount</th>
+        </tr>
+        <tr>
+          <td>CLM1001</td>
+          <td>POL123456789</td>
+          <td>2025-04-12</td>
+          <td>Approved</td>
+          <td>$1,250.00</td>
+        </tr>
+        <tr>
+          <td>CLM1002</td>
+          <td>POL987654321</td>
+          <td>2025-04-15</td>
+          <td>Under Review</td>
+          <td>$320.00</td>
+        </tr>
+        <tr>
+          <td>CLM1003</td>
+          <td>POL555888999</td>
+          <td>2025-04-18</td>
+          <td>Rejected</td>
+          <td>$0.00</td>
+        </tr>
+        <tr>
+          <td>CLM1004</td>
+          <td>POL321654987</td>
+          <td>2025-04-20</td>
+          <td>Pending Documents</td>
+          <td>$950.00</td>
+        </tr>
+        <tr>
+          <td>CLM1005</td>
+          <td>POL123456789</td>
+          <td>2025-04-25</td>
+          <td>Processing</td>
+          <td>$780.00</td>
+        </tr>
+      </table>
+  
+      <p class="note">
+        If you are looking for a claim that you have submitted and it’s not here, it may still be in processing
+        OR the information you provided when you registered may not match with the information you submitted with your claim.
+      </p>
+    </div>
   

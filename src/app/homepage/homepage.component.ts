@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-homepage',
@@ -8,35 +9,5 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './homepage.component.css'
 })
 export class HomepageComponent {
-  constructor(private router: Router) { }
-  
-   //navigating to login form directly
-   navigateToLogin() {
-    this.router.navigate(['/login'], { fragment: 'loginSection' });
-  }
-  
-  
-  navigateToContact() {
-    this.router.navigate(['/contact']);
-  }
-  
-  navigateToStartClaim() {
-    this.router.navigate(['/start-claim']);
-  }
-  
-  navigateToSubmitDocuments() {
-    this.router.navigate(['/submit-documents']);
-  }
-  
-  navigateToFAQ() {
-    this.router.navigate(['/faq']);
-  }
-  
-  navigateToClaimStatus() {
-    this.router.navigate(['/claim-status']);
-  }
-  
-  switchToFrench() {
-    console.log('Switching to French');
-}
+  constructor(public nav:NavigationService) { }
 }

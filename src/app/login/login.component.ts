@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../services/Claimportal.service';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent {
     remember: false
   };
 
-  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService, public nav:NavigationService) {}
 
   ngAfterViewInit(): void {
     this.route.fragment.subscribe(fragment => {
@@ -60,34 +61,6 @@ export class LoginComponent {
     });
     
   }
+
   
-  
-
-  clickOnRegister(): void {
-    this.router.navigate(['/register']);
-  }
-
-  navigateToContact() {
-    this.router.navigate(['/contact']);
-  }
-
-  navigateToStartClaim() {
-    this.router.navigate(['/start-claim']);
-  }
-
-  navigateToSubmitDocuments() {
-    this.router.navigate(['/submit-documents']);
-  }
-
-  navigateToFAQ() {
-    this.router.navigate(['/faq']);
-  }
-
-  navigateToClaimStatus() {
-    this.router.navigate(['/claim-status']);
-  }
-
-  navigateToLogin() {
-    this.router.navigate(['/login'], { fragment: 'loginSection' });
-  }
 }

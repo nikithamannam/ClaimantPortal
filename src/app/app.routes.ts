@@ -8,6 +8,7 @@ import { FaqComponent } from "./faq/faq.component";
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PolicyDetailsComponent } from './policy-details/policy-details.component';
 
 export const routes: Routes = [
     { path: '', component: HomepageComponent },
@@ -19,6 +20,7 @@ export const routes: Routes = [
     {path : 'dashboard', component: DashboardComponent},
     { path: 'contact', component: ContactComponent },
     { path: 'profile', component: ProfileComponent},
+    { path: 'policy-details', component: PolicyDetailsComponent},
     { path: '**', redirectTo: '' }
   ];
   

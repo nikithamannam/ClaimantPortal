@@ -1,1 +1,28 @@
-<p>policy-details works!</p>
+<div class="banner">
+    <h2>POLICY INFORMATION</h2>
+  </div>
+  
+  <div class="container">
+    <div class="form-row">
+      <label for="policyNum">Policy Number: *</label>
+      <input type="text" id="policyNum" name="policyNum" required [(ngModel)]="policyNum">
+      <button type="submit">Continue</button>
+    </div>
+    
+  
+    <div class="result-row">
+      <label for="leadInsured">Lead Insured Name:</label>
+      <p id="leadInsured" name="leadInsured">{{ leadInsured }}</p>
+    </div>
+  
+    <div class="result-row">
+      <label for="dependants">Dependants:</label>
+      <p id="dependants" name="dependants">{{ dependants }}</p>
+    </div>
+  
+    <div class="result-row">
+      <label for="org">Organisation:</label>
+      <p id="org" name="org">{{ org }}</p>
+    </div>
+  </div>
+  

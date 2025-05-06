@@ -1,6 +1,7 @@
 import { Component, DoCheck} from '@angular/core';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { NavigationService } from '../../services/navigation.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements DoCheck {
     lastN :' '
   } ;
 
-  constructor(private router: Router) {}
+  constructor(public nav:NavigationService) {}
 
   ngDoCheck(): void {
     const user: any = JSON.parse(localStorage.getItem('user') || 'null');
@@ -29,38 +30,7 @@ export class HeaderComponent implements DoCheck {
   logout(): void {
     localStorage.removeItem('user');
     this.isLoggedIn = false;
-    this.router.navigate(['/login']);
+    this.nav.toLogin();
   }
 
-  navigateToHomepage() {
-    this.router.navigate(['/homepage']);
-  }
-
-  navigateToContact() {
-    this.router.navigate(['/contact']);
-  }
-
-  navigateToProfile(){
-    this.router.navigate(['/profile']);
-  }
-
-  navigateToLogin(){
-    this.router.navigate(['/login'],{fragment:'loginSection'});
-  }
-
-  navigateToStartClaim() {
-    this.router.navigate(['/start-claim']);
-  }
-  
-  navigateToSubmitDocuments() {
-    this.router.navigate(['/submit-documents']);
-  }
-  
-  navigateToFAQ() {
-    this.router.navigate(['/faq']);
-  }
-
-  navigateToDashboard(){
-    this.router.navigate(['/dashboard']);
-  }
 }

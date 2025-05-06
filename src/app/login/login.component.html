@@ -17,7 +17,7 @@
       <div class="info-content">
         <p>
           To let us know about a <strong>new claim</strong>, the
-          <a (click)="navigateToStartClaim()" class="text-link">Start a Claim</a>
+          <a (click)="nav.toStartClaim()" class="text-link">Start a Claim</a>
           section is the best place to start.
         </p>
       </div>
@@ -29,7 +29,7 @@
       <div class="info-content">
         <p>
           To send us your documents, use the
-          <a (click)="navigateToSubmitDocuments()" class="text-link">Submit Documents</a>
+          <a (click)="nav.toSubmitDocuments()" class="text-link">Submit Documents</a>
           section.
         </p>
       </div>
@@ -41,7 +41,7 @@
       <div class="info-content">
         <p>
           To follow the <strong>progress of your claim</strong>, visit the
-          <a (click)="navigateToClaimStatus()" class="text-link">Online Claim Status</a>
+          <a (click)="nav.toClaimStatus()" class="text-link">Online Claim Status</a>
           section.
         </p>
       </div>
@@ -53,7 +53,7 @@
       <div class="info-content">
         <p>
           To answer some of your questions, visit the
-          <a (click)="navigateToFAQ()" class="text-link">FAQ</a>
+          <a (click)="nav.toFAQ()" class="text-link">FAQ</a>
           section.
         </p>
       </div>
@@ -64,7 +64,7 @@
     <div class="info-row">
       <div class="info-content">
         <p>
-          Please use <a (click)="navigateToContact()" class="text-link">Contact us</a>
+          Please use <a (click)="nav.toContactUs()" class="text-link">Contact us</a>
           to send your questions or comments.
         </p>
       </div>
@@ -76,7 +76,7 @@
       <div class="info-content">
         <p>
           To login or create an account, visit the
-          <a (click)="navigateToLogin()" class="text-link">Login</a>
+          <a (click)="nav.toLogin()" class="text-link">Login</a>
           page.
         </p>
       </div>
@@ -94,7 +94,7 @@
   </p>
 
   <p class="register-link">
-    <a (click)="clickOnRegister()" style="cursor: pointer;">New User? Click here to Register.</a>
+    <a (click)="nav.clickOnRegister()" style="cursor: pointer;">New User? Click here to Register.</a>
   </p>
 
   <p class="required-note">
@@ -119,12 +119,6 @@
       required
       [(ngModel)]="form.password"
     />
-  
-    <!--
-    <p class="forgot-password">
-      <a routerLink="/forgot-password">Forgot Password?</a>
-    </p>
-    -->
   
     <div class="remember-me">
       <input
