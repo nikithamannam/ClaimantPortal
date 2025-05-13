@@ -43,4 +43,12 @@ export class NavigationService {
   clickOnRegister(): void {
     this.router.navigate(['/register']);
   }
+
+  toDashboard(): void{
+    this.router.navigate(['/dashboard']);
+  }
+
+  toPolicyDetails(): void{
+    this.router.navigate(['/policy-details']);
+  }
 }

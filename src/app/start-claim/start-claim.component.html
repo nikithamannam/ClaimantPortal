@@ -27,8 +27,8 @@
           <label for="traveling">Are you currently travelling? *</label>
           <select id="traveling">
             <option value="" disabled selected></option>
-            <option value="true">True</option>
-            <option value="false">False</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
           </select>
         </div>
       </form>
@@ -37,16 +37,37 @@
           <label for="traveling">Are you seeking or planning to seek medical attention? </label>
           <select id="medicalAttention" [(ngModel)]="isSeekingMedicalAttention" name="medicalAttention">
             <option value="" disabled selected></option>
-            <option value="true">True</option>
-            <option value="false">False</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
           </select>
         </div>
-        <div *ngIf="isSeekingMedicalAttention === 'true'">
+        <div *ngIf="isSeekingMedicalAttention === 'yes'">
             <p>If you are currently travelling, seeking treatment, or planning to seek treatment please contact us at +1-819-780-1999, for toll-free number+1-855-237-6911</p>
         </div>
-        <div *ngIf ="isSeekingMedicalAttention ==='false'">
-            <p>false</p>
+        <div *ngIf="isSeekingMedicalAttention === 'no'">
+          <div class="form-group">
+            <label for="province">Please select your providence of residence *</label>
+            <select id="province" [(ngModel)]="selectedProvince" name="province" class="form-control">
+              <option value="" disabled selected></option>
+              <option *ngFor="let province of provinces" [value]="province">{{ province }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="insuranceType">Insurance Type</label>
+            <select id="insuranceType" [(ngModel)]="selectedInsurance" name="insuranceType" class="form-control">
+              <option value="" disabled selected></option>
+              <option *ngFor="let i of insurance" [value]="i">{{ i }}</option>
+            </select>
+          </div>
+          <div class="note-box">
+            <p><strong>Note:</strong> Before proceeding with the claim form, please carefully review the documents listed in the ‘Required Documents’ section on this page to ensure you have them readily available.</p>
+          </div>
+          <h4>POLICY HOLDER INFORMATION</h4>
+          
         </div>
+
+
       </form>
     </div>
   </div>

@@ -21,4 +21,11 @@
     border-radius: 2px;
   }
   
-  
+  .note-box,
+    .info-box {
+      background-color: #f3f3f3;
+      border-left: 4px solid #0071bc;
+      padding: 15px;
+      margin: 20px 0;
+      font-size: 14px;
+    }

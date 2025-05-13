@@ -1,36 +1,41 @@
 <form #contactForm="ngForm" class="contact-form" (ngSubmit)="onUpdate()">
-      <p>* Indicates a required field</p>
+  <p><i>* Indicates a required field</i></p>
 
-      <div class="form-row">
-        <label for="firstName">First Name: *</label>
-        <input type="text" id="firstName" name="firstName" required [(ngModel)]="userData.firstName">
-      </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="firstName">First Name: *</label>
+      <input type="text" id="firstName" name="firstName" required [(ngModel)]="userData.firstName">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name: *</label>
+      <input type="text" id="lastName" name="lastName" required [(ngModel)]="userData.lastName">
+    </div>
+  </div>
 
-      <div class="form-row">
-        <label for="lastName">Last Name: *</label>
-        <input type="text" id="lastName" name="lastName" required [(ngModel)]="userData.lastName">
-      </div>
+  <div class="form-row">
+    
+    
+  </div>
 
-      <div class="form-row">
-        <label for="dob">Date of Birth: *</label>
-        <input type="date" id="dob" name="dob" required [(ngModel)]="userData.dob">
-      </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="primaryPhone">Phone Number (where we can reach you): *</label>
+      <input type="tel" id="primaryPhone" name="primaryPhone" required [(ngModel)]="userData.primaryPhone">
+    </div>
+    <div class="form-group">
+      <label for="otherPhone">Phone Number (other):</label>
+      <input type="tel" id="otherPhone" name="otherPhone" [(ngModel)]="userData.otherPhone">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="dob">Date of Birth: *</label>
+    <input type="date" id="dob" name="dob" required [(ngModel)]="userData.dob">
+  </div>
+  <div class="form-group">
+    <label for="email">Email: *</label>
+    <input type="email" id="email" name="email" required [(ngModel)]="userData.email">
+  </div>
 
-      <div class="form-row">
-        <label for="email">Email: *</label>
-        <input type="email" id="email" name="email" required [(ngModel)]="userData.email">
-      </div>
 
-      <div class="form-row">
-        <label for="primaryPhone">Phone Number (where we can reach you): *</label>
-        <input type="tel" id="primaryPhone" name="primaryPhone" required [(ngModel)]="userData.primaryPhone">
-      </div>
-
-      <div class="form-row">
-        <label for="otherPhone">Phone Number (other):</label>
-        <input type="tel" id="otherPhone" name="otherPhone" [(ngModel)]="userData.otherPhone">
-      </div>
-
-
-      <button type="update" [disabled]="!contactForm.valid">Submit</button>
-    </form>
+  <button type="submit" [disabled]="!contactForm.valid">Submit</button>
+</form>

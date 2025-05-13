@@ -10,6 +10,26 @@ import { FormsModule } from '@angular/forms';
 })
 export class StartClaimComponent {
   selectedTopic: string = '';
-  isSeekingMedicalAttention: string='';
+  isSeekingMedicalAttention: string = '';
+  isTraveling: string = '';
+  selectedProvince: string = '';
+  selectedInsurance: string = '';
+  provinces: string[] = [
+    'Alberta',
+    'British Columbia',
+    'Manitoba',
+    'Newfoundland and Labrador',
+    'Ontario',
+    'Quebec',
+    'Saskatchewan',
+    'All others'
+  ];
+
+  insurance: string[]=[
+    'Group Insurance',
+    'Credit Card Insurance',
+    'Purchased Insurance',
+    'Others'
+  ];
 
 }

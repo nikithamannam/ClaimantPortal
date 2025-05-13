@@ -32,4 +32,8 @@ export class AuthService {
     );
   }
 
+  updateUser(id: number, userDetails: userData): Observable<any> {
+    return this.http.put(`${this.baseUrl}/UpdateUser/${id}`, userDetails);
+  }
+
 }
