@@ -1,74 +1,182 @@
 <div class="banner">
-    <h2>START A CLAIM</h2>
+  <h2>START A CLAIM</h2>
 </div>
+
 <p>* Indicates a required field</p>
 
 <div class="container">
-    <form>
+  <form>
+    <!-- Claim Type -->
+    <div class="form-group">
+      <label for="claimType">Select type of claim:</label>
+      <select id="claimType" [(ngModel)]="selectedTopic" name="selectedTopic">
+        <option value="" disabled selected>Select a topic</option>
+        <option value="1">Emergency Medical Travel</option>
+        <option value="2">Visitors to Canada</option>
+        <option value="3">Trip Cancellation/Interruption</option>
+        <option value="4">Baggage/Flight Delay</option>
+        <option value="5">Hotel/Motel Burglary</option>
+        <option value="6">Student</option>
+        <option value="7">Expatriate</option>
+        <option value="8">Inpatriate</option>
+      </select>
+    </div>
+
+    <!-- Emergency Medical Travel Section -->
+    <div *ngIf="selectedTopic === '1'">
       <div class="form-group">
-        <label for="claimType">Select type of claim:</label>
-        <select id="claimType" [(ngModel)]="selectedTopic" name="selectedTopic">
-          <option value="" disabled selected>Select a topic</option>
-          <option value="1">Emergency Medical Travel</option>
-          <option value="2">Visitors to Canada</option>
-          <option value="3">Trip Cancellation/Interruption</option>
-          <option value="4">Baggage/Flight Delay</option>
-          <option value="5">Hotel/Motel Burglary</option>
-          <option value="6">Student</option>
-          <option value="7">Expatriate</option>
-          <option value="8">Inpatriate</option>
+        <label for="traveling">Are you currently travelling? *</label>
+        <select id="traveling">
+          <option value="" disabled selected></option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
         </select>
       </div>
-    </form>
-  
-    <div *ngIf="selectedTopic === '1'">
-      <form>
+
+      <div class="form-group">
+        <label for="medicalAttention">Are you seeking or planning to seek medical attention?</label>
+        <select id="medicalAttention" [(ngModel)]="isSeekingMedicalAttention" name="medicalAttention">
+          <option value="" disabled selected></option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <!-- Contact Us Message -->
+      <div *ngIf="isSeekingMedicalAttention === 'yes'" class="info-box">
+        <p>If you are currently travelling, seeking treatment, or planning to seek treatment, please contact us at
+          +1-819-780-1999 or toll-free at +1-855-237-6911.</p>
+      </div>
+
+      <!-- Additional Info Form -->
+      <div *ngIf="isSeekingMedicalAttention === 'no'">
+        <!-- Province -->
         <div class="form-group">
-          <label for="traveling">Are you currently travelling? *</label>
-          <select id="traveling">
+          <label for="province">Please select your province of residence *</label>
+          <select id="province" [(ngModel)]="selectedProvince" name="province" class="form-control">
             <option value="" disabled selected></option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+            <option *ngFor="let province of provinces" [value]="province">{{ province }}</option>
           </select>
         </div>
-      </form>
-      <form>
+
+        <!-- Insurance Type -->
         <div class="form-group">
-          <label for="traveling">Are you seeking or planning to seek medical attention? </label>
-          <select id="medicalAttention" [(ngModel)]="isSeekingMedicalAttention" name="medicalAttention">
+          <label for="insuranceType">Insurance Type</label>
+          <select id="insuranceType" [(ngModel)]="selectedInsurance" name="insuranceType" class="form-control">
             <option value="" disabled selected></option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+            <option *ngFor="let i of insurance" [value]="i">{{ i }}</option>
           </select>
         </div>
-        <div *ngIf="isSeekingMedicalAttention === 'yes'">
-            <p>If you are currently travelling, seeking treatment, or planning to seek treatment please contact us at +1-819-780-1999, for toll-free number+1-855-237-6911</p>
-        </div>
-        <div *ngIf="isSeekingMedicalAttention === 'no'">
-          <div class="form-group">
-            <label for="province">Please select your providence of residence *</label>
-            <select id="province" [(ngModel)]="selectedProvince" name="province" class="form-control">
-              <option value="" disabled selected></option>
-              <option *ngFor="let province of provinces" [value]="province">{{ province }}</option>
-            </select>
-          </div>
 
+        <!-- Conditional Insurance Fields -->
+        <div *ngIf="selectedInsurance === 'Group Insurance'">
           <div class="form-group">
-            <label for="insuranceType">Insurance Type</label>
-            <select id="insuranceType" [(ngModel)]="selectedInsurance" name="insuranceType" class="form-control">
-              <option value="" disabled selected></option>
-              <option *ngFor="let i of insurance" [value]="i">{{ i }}</option>
-            </select>
+            <label for="employerName">Provide your employer name: *</label>
+            <input type="text" id="employerName" name="employerName" class="form-control" />
           </div>
-          <div class="note-box">
-            <p><strong>Note:</strong> Before proceeding with the claim form, please carefully review the documents listed in the ‘Required Documents’ section on this page to ensure you have them readily available.</p>
+          <div class="form-group">
+            <label for="policyNumber">Policy/Certificate Number: *</label>
+            <input type="text" id="policyNumber" name="policyNumber" class="form-control" />
           </div>
-          <h4>POLICY HOLDER INFORMATION</h4>
-          
         </div>
 
+        <div *ngIf="selectedInsurance === 'Credit Card Insurance'">
+          <div class="form-group">
+            <label for="cardDigits">Last 4 digits of card number: *</label>
+            <input type="text" id="cardDigits" name="cardDigits" class="form-control" maxlength="4" />
+          </div>
+        </div>
 
-      </form>
-    </div>
+        <div *ngIf="selectedInsurance === 'Purchased Insurance'">
+          <div class="form-group">
+            <label for="policyNumber">Policy/Certificate Number: *</label>
+            <input type="text" id="policyNumber" name="policyNumber" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="cardDigits">Last 4 digits of card number: *</label>
+            <input type="text" id="cardDigits" name="cardDigits" class="form-control" maxlength="4" />
+          </div>
+        </div>
+
+        <div *ngIf="selectedInsurance === 'Others'">
+          <div class="form-group">
+            <label for="insuranceProduct">Name of your insurance product: *</label>
+            <input type="text" id="insuranceProduct" name="insuranceProduct" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="policyNumber">Policy/Certificate Number: *</label>
+            <input type="text" id="policyNumber" name="policyNumber" class="form-control" />
+          </div>
+        </div>
+
+        <!-- Note -->
+        <div class="note-box">
+          <p><strong>Note:</strong> Please review the ‘Required Documents’ section on this page before proceeding.</p>
+        </div>
+
+
+<h4>POLICYHOLDER INFORMATION</h4>
+
+<div class="policyholder-grid">
+  <div class="form-group">
+    <label for="firstName">First Name: *</label>
+    <input type="text" id="firstName" name="firstName" />
   </div>
-  
+  <div class="form-group">
+    <label for="lastName">Last Name: *</label>
+    <input type="text" id="lastName" name="lastName" />
+  </div>
+
+  <div class="form-group">
+    <label for="dob">Date of Birth: *</label>
+    <input type="date" id="dob" name="dob" />
+  </div>
+  <div class="form-group">
+    <label for="email">Email Address: *</label>
+    <input type="email" id="email" name="email" />
+  </div>
+
+  <div class="form-group full-width">
+    <label for="homeAddress">Home Address: *</label>
+    <input type="text" id="homeAddress" name="homeAddress" />
+  </div>
+
+  <div class="form-group">
+    <label for="province">Province: *</label>
+    <select id="province" name="province" required>
+      <option value="" disabled selected>Select Province</option>
+      <option value="QC">Quebec</option>
+      <option value="ON">Ontario</option>
+      <option value="BC">British Columbia</option>
+      <!-- Add more as needed -->
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="city">City: *</label>
+    <input type="text" id="city" name="city" />
+  </div>
+
+  <div class="form-group">
+    <label for="postalCode">Postal Code: *</label>
+    <input type="text" id="postalCode" name="postalCode" />
+  </div>
+  <div class="form-group">
+    <label for="phoneNumber">Phone Number: *</label>
+    <input type="tel" id="phoneNumber" name="phoneNumber" />
+  </div>
+
+  <div class="form-group full-width">
+    <label for="isPolicyholder">Is the claimant the policyholder? *</label>
+    <select id="isPolicyholder" name="isPolicyholder" required>
+      <option value="" disabled selected>Select</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+  </div>
+</div>
+
+
+      </div>
+    </div>
+  </form>
+</div>
