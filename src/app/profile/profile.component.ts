@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../services/Claimportal.service'; 
+
 @Component({
   selector: 'app-profile',
   imports:[FormsModule],
@@ -10,8 +12,8 @@ export class ProfileComponent implements OnInit {
   userData: any = {
     firstName: '',
     lastName: '',
-    homePhone: '',
-    mobilePhone: '',
+    primaryPhone: '',
+    otherPhone: '',
     dob: '',
     language: '',
     email: '',
@@ -19,10 +21,12 @@ export class ProfileComponent implements OnInit {
     contactPhone: '',
     isPrimary: false
   };
+  userId: number | null = null;
 
   ngOnInit(): void {
     const user: any = JSON.parse(localStorage.getItem('user') || 'null');
     if (user) {
+      this.userId = user.userId;
       this.userData = {
         ...this.userData,
         firstName: user.firstName || '',
@@ -41,10 +45,37 @@ export class ProfileComponent implements OnInit {
           this.userData.dob = user.dateOfBirth?.split('T')[0];
         }
   }
+  constructor(private authService: AuthService) {}
+   onUpdate(): void {
+    if (!this.userId) {
+      alert('User ID not found. Cannot update.');
+      return;
+    }
 
-  onUpdate(): void {
-    localStorage.setItem('userData', JSON.stringify(this.userData));
-    alert('Information updated!');
+ 
+  const updatePayload = {
+  FirstName: this.userData.firstName,
+  LastName: this.userData.lastName,
+  PhoneNumber: this.userData.primaryPhone,
+  OtherPhone: this.userData.otherPhone ?? '',
+  DateOfBirth: this.userData.dob,
+  Email: this.userData.email,
+  Address: this.userData.address1 ?? '',
+};
+
+
+    debugger;
+
+    this.authService.updateUser(this.userId, updatePayload).subscribe({
+      next: (response) => {
+        alert('Information updated successfully!');
+        const updatedUser = { ...JSON.parse(localStorage.getItem('user') || '{}'), ...this.userData };
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+      },
+      error: (err) => {
+        alert('Error updating user information: ' + err.message);
+      }
+    });
   }
 
   onCancel(): void {

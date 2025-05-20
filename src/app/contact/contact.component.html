@@ -3,6 +3,7 @@
 </div>
 
 <div class="container">
+  <!-- Topic Selection -->
   <h2>What would you like to talk to us about?</h2>
 
   <form>
@@ -16,158 +17,174 @@
       <option value="billing">Billings</option>
       <option value="complaint">Complaints</option>
       <option value="appeal">Appeals</option>
-    
     </select>
   </form>
 
-  <!-- Emergency Travel Assistance -->
+  <!-- ==================== EMERGENCY TRAVEL ASSISTANCE ==================== -->
   <div *ngIf="selectedTopic === '1'">
     <h5>
-      A request for Travel Assistance will be processed within a few hours. This form should not be used for urgent medical requests. If immediate assistance is required, please contact us using the emergency phone number found on your insurance documentation.
+      A request for Travel Assistance will be processed within a few hours.
+      This form should not be used for urgent medical requests. If immediate assistance is required,
+      please contact us using the emergency phone number found on your insurance documentation.
     </h5>
+
     <form #contactForm="ngForm" class="contact-form" (ngSubmit)="onSubmit()">
       <p>* Indicates a required field</p>
 
       <div class="form-row">
         <label for="policyNum">Policy Number:</label>
-        <input type="text" id="policyNum" name="policyNum" [(ngModel)]="contactFormData.policyNum">
+        <input type="text" id="policyNum" name="policyNum" [(ngModel)]="contactFormData.policyNum" />
       </div>
 
       <div class="form-row">
         <label for="firstName">First Name: *</label>
-        <input type="text" id="firstName" name="firstName" required [(ngModel)]="contactFormData.firstName">
+        <input type="text" id="firstName" name="firstName" required [(ngModel)]="contactFormData.firstName" />
       </div>
 
       <div class="form-row">
         <label for="lastName">Last Name: *</label>
-        <input type="text" id="lastName" name="lastName" required [(ngModel)]="contactFormData.lastName">
+        <input type="text" id="lastName" name="lastName" required [(ngModel)]="contactFormData.lastName" />
       </div>
 
       <div class="form-row">
         <label for="dob">Date of Birth: *</label>
-        <input type="date" id="dob" name="dob" required [(ngModel)]="contactFormData.dob">
+        <input type="date" id="dob" name="dob" required [(ngModel)]="contactFormData.dob" />
       </div>
 
       <div class="form-row">
         <label for="claimNumber">Claim Number:</label>
-        <input type="text" id="claimNumber" name="claimNumber" [(ngModel)]="contactFormData.claimNumber">
+        <input type="text" id="claimNumber" name="claimNumber" [(ngModel)]="contactFormData.claimNumber" />
       </div>
 
       <div class="form-row">
         <label for="email">Email: *</label>
-        <input type="email" id="email" name="email" required [(ngModel)]="contactFormData.email">
+        <input type="email" id="email" name="email" required [(ngModel)]="contactFormData.email" />
       </div>
 
       <div class="form-row">
         <label for="primaryPhone">Phone Number (where we can reach you): *</label>
-        <input type="tel" id="primaryPhone" name="primaryPhone" required [(ngModel)]="contactFormData.primaryPhone">
+        <input type="tel" id="primaryPhone" name="primaryPhone" required [(ngModel)]="contactFormData.primaryPhone" />
       </div>
 
       <div class="form-row">
         <label for="otherPhone">Phone Number (other):</label>
-        <input type="tel" id="otherPhone" name="otherPhone" [(ngModel)]="contactFormData.otherPhone">
+        <input type="tel" id="otherPhone" name="otherPhone" [(ngModel)]="contactFormData.otherPhone" />
       </div>
 
       <div class="form-row textarea-row">
-        <label for="comments">What is your request / How can we assist you?
-          Maximum of 2000 characters allowed. *</label>
+        <label for="comments">
+          What is your request / How can we assist you? (Max 2000 chars): *
+        </label>
         <textarea id="comments" name="comments" maxlength="2000" required [(ngModel)]="contactFormData.comments"></textarea>
       </div>
 
-      <button type="submit" >Submit</button>
+      <button type="submit">Submit</button>
     </form>
   </div>
 
-  <!-- Appeals -->
+  <!-- ==================== APPEALS ==================== -->
   <div *ngIf="selectedTopic === 'appeal'">
     <h5>APPEALS</h5>
-    <p>ClaimPortal is committed to providing the highest level of customer satisfaction. Your feedback is important to us and will assist us as we strive to continuously improve our service delivery.</p>
-    <h5>CUSTOMER COMPLANT RESOLUTION PROCESS</h5>
+    <p>
+      ClaimPortal is committed to providing the highest level of customer satisfaction.
+      Your feedback is important to us and will assist us as we strive to continuously improve our service delivery.
+    </p>
+
+    <h5>CUSTOMER COMPLAINT RESOLUTION PROCESS</h5>
     <p>This is how the Quality Management department will handle your appeal.</p>
+
     <ol>
       <li>
         <h6>Acknowledgement</h6>
-        <p>Once we receive your formal written request for appeal, we will acknowledge receipt and let you know when you can reasonably expect a response.</p>
+        <p>We will confirm receipt of your appeal and share an estimated response time.</p>
       </li>
       <li>
-        <h6>File review and investigation</h6>
-        <p>Customer relations staff will conduct a careful review of your file, investigate service complaints thoroughly and impartially, and consult with the parties involved with and/or responsible for your concerns. Once completed, a recommendation is made and a decision rendered.</p>
+        <h6>File Review and Investigation</h6>
+        <p>A thorough and impartial review will be conducted involving all relevant parties.</p>
       </li>
       <li>
         <h6>Resolution</h6>
-        <p>Customer relations will communicate with you once a decision has been made.</p>
+        <p>We will communicate our decision with you after the review is complete.</p>
       </li>
     </ol>
 
-    <p><strong>Note:</strong> Please review the other email categories in the above drop down menu before sending an appeal.</p>
+    <p><strong>Note:</strong> Please review the other email categories before submitting an appeal.</p>
 
-    <form #contactForm="ngForm" class="contact-form">
+    <form #contactForm="ngForm" class="contact-form" (ngSubmit)="onSubmit()">
       <p><em>* Indicates a required field</em></p>
 
       <div class="form-row">
         <label for="firstName">First Name: *</label>
-        <input type="text" id="firstName" name="firstName" required [(ngModel)]="contactFormData.firstName">
+        <input type="text" id="firstName" name="firstName" required [(ngModel)]="contactFormData.firstName" />
       </div>
 
       <div class="form-row">
         <label for="lastName">Last Name: *</label>
-        <input type="text" id="lastName" name="lastName" required [(ngModel)]="contactFormData.lastName">
+        <input type="text" id="lastName" name="lastName" required [(ngModel)]="contactFormData.lastName" />
       </div>
 
       <div class="form-row">
         <label for="dob">Date of Birth: *</label>
-        <input type="date" id="dob" name="dob" required [(ngModel)]="contactFormData.dob">
+        <input type="date" id="dob" name="dob" required [(ngModel)]="contactFormData.dob" />
       </div>
 
       <div class="form-row">
         <label for="claimNumber">Claim Number:</label>
-        <input type="text" id="claimNumber" name="claimNumber" ngModel>
+        <input type="text" id="claimNumber" name="claimNumber" [(ngModel)]="contactFormData.claimNumber" />
       </div>
 
       <div class="form-row">
         <label for="email">Email: *</label>
-        <input type="email" id="email" name="email" required [(ngModel)]="contactFormData.email">
+        <input type="email" id="email" name="email" required [(ngModel)]="contactFormData.email" />
       </div>
 
       <div class="form-row">
         <label for="primaryPhone">Phone Number (where we can reach you): *</label>
-        <input type="tel" id="primaryPhone" name="primaryPhone" required [(ngModel)]="contactFormData.primaryPhone">
+        <input type="tel" id="primaryPhone" name="primaryPhone" required [(ngModel)]="contactFormData.primaryPhone" />
       </div>
 
       <div class="form-row">
         <label for="otherPhone">Phone Number (other):</label>
-        <input type="tel" id="otherPhone" name="otherPhone" ngModel>
+        <input type="tel" id="otherPhone" name="otherPhone" [(ngModel)]="contactFormData.otherPhone" />
       </div>
 
       <div class="form-row textarea-row">
         <label for="comments">Your question or comments (max 2000 chars): *</label>
-        <textarea id="comments" name="comments" maxlength="2000" required ngModel></textarea>
+        <textarea id="comments" name="comments" maxlength="2000" required [(ngModel)]="contactFormData.comments"></textarea>
       </div>
 
       <div class="form-row">
         <label for="attachments">Attach File: *</label>
-        <input type="file" id="attachments" name="attachments" (change)="onFileChange($event)" multiple accept=".doc,.pdf,.zip,.pcx,.docx,.jpg,.jpeg,.jpe,.jfif,.gif,.tiff,.tif,.bmp,.png,.txt">
+        <input
+          type="file"
+          id="attachments"
+          name="attachments"
+          (change)="onFileChange($event)"
+          multiple
+          accept=".doc,.pdf,.zip,.pcx,.docx,.jpg,.jpeg,.jpe,.jfif,.gif,.tiff,.tif,.bmp,.png,.txt"
+        />
       </div>
 
       <p>
-        Maximum of 10 files can be uploaded with combined max file size of 50 MB. <br>
-        Accepted file types: doc, pdf, zip, pcx, docx, jpg, jpeg, jpe, jfif, gif, tiff, tif, bmp, png, txt.<br>
-        Please ensure uploaded documents are <strong>not password protected</strong>.
+        You may upload up to 10 files (max total size: 50 MB).<br />
+        Accepted types: doc, pdf, zip, images, txt.<br />
+        Files should not be password protected.
       </p>
 
-      <button type="submit" >Submit</button>
+      <button type="submit">Submit</button>
     </form>
   </div>
 
+  <!-- ==================== CONTACT INFO ==================== -->
   <div class="contact-info">
     <div class="address">
-      <h3>Claim PortalInc.</h3>
-      <p>Street<br>City, Country<br>pin code</p>
+      <h3>Claim Portal Inc.</h3>
+      <p>Street<br />City, Country<br />PIN Code</p>
     </div>
 
     <div class="address">
       <h3>Claim Portal Inc.</h3>
-      <p>P.O. Box <br> City, Country<br>pincode</p>
+      <p>P.O. Box<br />City, Country<br />PIN Code</p>
     </div>
 
     <div class="assistance">

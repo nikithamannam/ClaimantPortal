@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/Claimportal.service';
 
 @Component({
   selector: 'app-submit-documents',
@@ -12,8 +13,10 @@ import {Router} from '@angular/router';
 })
 export class SubmitDocumentsComponent implements OnInit {
 
-  constructor (private router:Router){}
-claimType: string='';
+  constructor(private authService: AuthService, private router: Router) {}
+
+  filesToUpload: File[] = [];
+  claimType: string = '';
 
   formData: any = {
     submitType: '',
@@ -28,8 +31,9 @@ claimType: string='';
     claimTypeNonMedical: false,
     atTravel: null,
     seekingMedicalCare: null,
-    comments:''
+    comments: ''
   };
+
   claimDocuments: { [key: string]: string[] } = {
     '1': [
       'ITEMIZED RECEIPTS FOR ALL BILLS AND INVOICES',
@@ -87,8 +91,6 @@ claimType: string='';
     '7': ['OTHER SUPPORTING DOCUMENTS'],
     '8': ['OTHER SUPPORTING DOCUMENTS']
   };
-  
-  
 
   ngOnInit(): void {
     const user = JSON.parse(localStorage.getItem('user') || 'null');
@@ -103,27 +105,71 @@ claimType: string='';
   }
 
   onSubmit(): void {
-    console.log('Submitted data:', this.formData);
-    alert('Documents submitted successfully!');
+    const contactPayload = {
+      ContactUsTypeName: this.formData.submitType === '1' ? 'Completed Claim Forms' : 'Existing Claim Documents',
+      PolicyNumber: '',
+      FirstName: this.formData.firstName,
+      LastName: this.formData.lastName,
+      Email: this.formData.email,
+      PhoneNumber: this.formData.primaryPhone,
+      Request: this.formData.comments,
+      DateOfBirth: this.formData.dob,
+      ClaimNumber: this.formData.claimNumber,
+      ClaimType: this.formData.claimType === 'medical' ? 'Medical' : 'Non-Medical',
+      IsAtTravel: this.formData.atTravel,
+      IsSeekingMedicalCare: this.formData.seekingMedicalCare,
+      IsTripRelated: null
+    };
+
+    this.authService.createEmergencyRequest(contactPayload).subscribe({
+      next: () => {
+        if (this.filesToUpload.length > 0) {
+          this.uploadFilesSequentially(0);
+        } else {
+          alert('Contact submitted successfully, no files to upload.');
+        }
+      },
+      error: (err) => {
+        alert('Error submitting contact: ' + err.message);
+      }
+    });
   }
-  onFileChange(event: any) {
+
+  uploadFilesSequentially(index: number): void {
+    if (index >= this.filesToUpload.length) {
+      alert('All documents uploaded successfully!');
+      return;
+    }
+
+    const file = this.filesToUpload[index];
+    this.authService.uploadDocument(file).subscribe({
+      next: () => {
+        this.uploadFilesSequentially(index + 1);
+      },
+      error: (err) => {
+        alert(`Error uploading file ${file.name}: ` + err.message);
+      }
+    });
+  }
+
+  onFileChange(event: any): void {
     const files = event.target.files;
     if (files.length > 10) {
       alert("You can only upload a maximum of 10 files.");
       return;
     }
-
     let totalSize = 0;
     for (let i = 0; i < files.length; i++) {
       totalSize += files[i].size;
     }
-
     if (totalSize > 50 * 1024 * 1024) {
       alert("Combined file size cannot exceed 50 MB.");
+      return;
     }
+    this.filesToUpload = Array.from(files);
   }
 
-  navigateToStartClaim() {
+  navigateToStartClaim(): void {
     this.router.navigate(['/start-claim']);
   }
 }
