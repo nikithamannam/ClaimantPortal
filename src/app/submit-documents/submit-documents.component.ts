@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/Claimportal.service';
+
+
+
+
 
 @Component({
   selector: 'app-submit-documents',
@@ -12,6 +16,9 @@ import { AuthService } from '../services/Claimportal.service';
   styleUrls: ['./submit-documents.component.css'],
 })
 export class SubmitDocumentsComponent implements OnInit {
+
+  
+  @Input() showBanner: boolean = true;
 
   constructor(private authService: AuthService, private router: Router) {}
 

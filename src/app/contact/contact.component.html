@@ -81,8 +81,222 @@
       <button type="submit">Submit</button>
     </form>
   </div>
+  <!-- ==================== Claim Status and Billing ==================== -->
+  <div *ngIf="selectedTopic === 'status'">
+    <h5>This form should be used to request the status of a claim that had already been submitted. You can also track the status of your claim by registering on our Online Claim Status page using your claim number and email address.</h5>
+    <form #contactForm="ngForm" class="contact-form" (ngSubmit)="onSubmit()">
+      <p>* Indicates a required field</p>
 
-  <!-- ==================== APPEALS ==================== -->
+      <div class="form-row">
+        <label for="firstName">First Name: *</label>
+        <input type="text" id="firstName" name="firstName" required [(ngModel)]="contactFormData.firstName" />
+      </div>
+
+      <div class="form-row">
+        <label for="lastName">Last Name: *</label>
+        <input type="text" id="lastName" name="lastName" required [(ngModel)]="contactFormData.lastName" />
+      </div>
+
+      <div class="form-row">
+        <label for="dob">Date of Birth: *</label>
+        <input type="date" id="dob" name="dob" required [(ngModel)]="contactFormData.dob" />
+      </div>
+
+      <div class="form-row">
+        <label for="claimNumber">Claim Number:</label>
+        <input type="text" id="claimNumber" name="claimNumber" [(ngModel)]="contactFormData.claimNumber" />
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email: *</label>
+        <input type="email" id="email" name="email" required [(ngModel)]="contactFormData.email" />
+      </div>
+
+      <div class="form-row">
+        <label for="primaryPhone">Phone Number (where we can reach you): *</label>
+        <input type="tel" id="primaryPhone" name="primaryPhone" required [(ngModel)]="contactFormData.primaryPhone" />
+      </div>
+
+      <div class="form-row">
+        <label for="otherPhone">Phone Number (other):</label>
+        <input type="tel" id="otherPhone" name="otherPhone" [(ngModel)]="contactFormData.otherPhone" />
+      </div>
+
+      <div class="form-row textarea-row">
+        <label for="comments">
+          What is your request / How can we assist you? (Max 2000 chars): *
+        </label>
+        <textarea id="comments" name="comments" maxlength="2000" required [(ngModel)]="contactFormData.comments"></textarea>
+      </div>
+
+      <button type="submit">Send</button>
+    </form>
+  </div>
+  <!-- ==================== Submit bils or documents ==================== -->
+   <div *ngIf="selectedTopic === 'submit'">
+    <app-submit-documents [showBanner]="false"></app-submit-documents>
+   </div>
+
+  <!-- ==================== General Questions ==================== -->
+   <div *ngIf="selectedTopic === 'general'">
+    <form #contactForm="ngForm" class="contact-form" (ngSubmit)="onSubmit()">
+      <p>* Indicates a required field</p>
+
+      <div class="form-row">
+        <label for="policyNum">Policy Number:</label>
+        <input type="text" id="policyNum" name="policyNum" [(ngModel)]="contactFormData.policyNum" />
+      </div>
+
+      <div class="form-row">
+        <label for="firstName">First Name: *</label>
+        <input type="text" id="firstName" name="firstName" required [(ngModel)]="contactFormData.firstName" />
+      </div>
+
+      <div class="form-row">
+        <label for="lastName">Last Name: *</label>
+        <input type="text" id="lastName" name="lastName" required [(ngModel)]="contactFormData.lastName" />
+      </div>
+
+      <div class="form-row">
+        <label for="dob">Date of Birth: *</label>
+        <input type="date" id="dob" name="dob" required [(ngModel)]="contactFormData.dob" />
+      </div>
+
+      <div class="form-row">
+        <label for="claimNumber">Claim Number:</label>
+        <input type="text" id="claimNumber" name="claimNumber" [(ngModel)]="contactFormData.claimNumber" />
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email: *</label>
+        <input type="email" id="email" name="email" required [(ngModel)]="contactFormData.email" />
+      </div>
+
+      <div class="form-row">
+        <label for="primaryPhone">Phone Number (where we can reach you): *</label>
+        <input type="tel" id="primaryPhone" name="primaryPhone" required [(ngModel)]="contactFormData.primaryPhone" />
+      </div>
+
+      <div class="form-row">
+        <label for="otherPhone">Phone Number (other):</label>
+        <input type="tel" id="otherPhone" name="otherPhone" [(ngModel)]="contactFormData.otherPhone" />
+      </div>
+
+      <div class="form-row textarea-row">
+        <label for="comments">
+          What is your request / How can we assist you? (Max 2000 chars): *
+        </label>
+        <textarea id="comments" name="comments" maxlength="2000" required [(ngModel)]="contactFormData.comments"></textarea>
+      </div>
+
+      <button type="submit">Send</button>
+    </form>
+   </div>
+  <!-- ==================== Feedback and Compliments ==================== -->
+  <div *ngIf="selectedTopic === 'feedback'">
+   <h5>Feedback and Compliments</h5>
+   <p>One of Global Excel Management's most important priorities is your satisfaction and in order to continue improving our claims and assistance service, we welcome your feedback. Your comments are very valuable to us as it helps us understand what is important to you and tells us how we can improve our service delivery.</p>
+    
+   <form #contactForm="ngForm" class="contact-form" (ngSubmit)="onSubmit()">
+      <p>* Indicates a required field</p>
+
+      <div class="form-row">
+        <label for="firstName">First Name: *</label>
+        <input type="text" id="firstName" name="firstName" required [(ngModel)]="contactFormData.firstName" />
+      </div>
+
+      <div class="form-row">
+        <label for="lastName">Last Name: *</label>
+        <input type="text" id="lastName" name="lastName" required [(ngModel)]="contactFormData.lastName" />
+      </div>
+
+      <div class="form-row">
+        <label for="dob">Date of Birth: *</label>
+        <input type="date" id="dob" name="dob" required [(ngModel)]="contactFormData.dob" />
+      </div>
+
+      <div class="form-row">
+        <label for="claimNumber">Claim Number:</label>
+        <input type="text" id="claimNumber" name="claimNumber" [(ngModel)]="contactFormData.claimNumber" />
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email: *</label>
+        <input type="email" id="email" name="email" required [(ngModel)]="contactFormData.email" />
+      </div>
+
+      <div class="form-row">
+        <label for="primaryPhone">Phone Number (where we can reach you): *</label>
+        <input type="tel" id="primaryPhone" name="primaryPhone" required [(ngModel)]="contactFormData.primaryPhone" />
+      </div>
+
+      <div class="form-row">
+        <label for="otherPhone">Phone Number (other):</label>
+        <input type="tel" id="otherPhone" name="otherPhone" [(ngModel)]="contactFormData.otherPhone" />
+      </div>
+
+      <div class="form-row textarea-row">
+        <label for="comments">
+          What is your request / How can we assist you? (Max 2000 chars): *
+        </label>
+        <textarea id="comments" name="comments" maxlength="2000" required [(ngModel)]="contactFormData.comments"></textarea>
+      </div>
+
+      <button type="submit">Send</button>
+    </form>
+  </div>
+  <!-- =====================Billings ==================== -->
+   <div *ngIf="selectedTopic ==='billing'">
+    <form #contactForm="ngForm" class="contact-form" (ngSubmit)="onSubmit()">
+      <p>* Indicates a required field</p>
+
+      <div class="form-row">
+        <label for="firstName">First Name: *</label>
+        <input type="text" id="firstName" name="firstName" required [(ngModel)]="contactFormData.firstName" />
+      </div>
+
+      <div class="form-row">
+        <label for="lastName">Last Name: *</label>
+        <input type="text" id="lastName" name="lastName" required [(ngModel)]="contactFormData.lastName" />
+      </div>
+
+      <div class="form-row">
+        <label for="dob">Date of Birth: *</label>
+        <input type="date" id="dob" name="dob" required [(ngModel)]="contactFormData.dob" />
+      </div>
+
+      <div class="form-row">
+        <label for="claimNumber">Claim Number:</label>
+        <input type="text" id="claimNumber" name="claimNumber" [(ngModel)]="contactFormData.claimNumber" />
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email: *</label>
+        <input type="email" id="email" name="email" required [(ngModel)]="contactFormData.email" />
+      </div>
+
+      <div class="form-row">
+        <label for="primaryPhone">Phone Number (where we can reach you): *</label>
+        <input type="tel" id="primaryPhone" name="primaryPhone" required [(ngModel)]="contactFormData.primaryPhone" />
+      </div>
+
+      <div class="form-row">
+        <label for="otherPhone">Phone Number (other):</label>
+        <input type="tel" id="otherPhone" name="otherPhone" [(ngModel)]="contactFormData.otherPhone" />
+      </div>
+
+      <div class="form-row textarea-row">
+        <label for="comments">
+          What is your request / How can we assist you? (Max 2000 chars): *
+        </label>
+        <textarea id="comments" name="comments" maxlength="2000" required [(ngModel)]="contactFormData.comments"></textarea>
+      </div>
+
+      <button type="submit">Send</button>
+    </form>
+   </div>
+   
+   <!-- ==================== APPEALS ==================== -->
   <div *ngIf="selectedTopic === 'appeal'">
     <h5>APPEALS</h5>
     <p>

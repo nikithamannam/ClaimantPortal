@@ -98,4 +98,6 @@ a:hover {
     background-color: gray;
     cursor: not-allowed;
   }
-  
+  app-submit-documents .banner {
+  align-self:baseline;
+}

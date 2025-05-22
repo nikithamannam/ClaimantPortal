@@ -2,13 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../services/Claimportal.service';
+import { SubmitDocumentsComponent } from '../submit-documents/submit-documents.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, SubmitDocumentsComponent],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class ContactComponent implements OnInit {
   selectedTopic: string = '';
