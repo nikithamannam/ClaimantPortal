@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/Claimportal.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-register',
@@ -44,13 +45,15 @@ export class RegisterComponent {
   
     const dobString = `${this.form.year}-${this.pad(this.form.month)}-${this.pad(this.form.day)}`;
     const dob = new Date(dobString);
+
+     const hashedPassword = CryptoJS.SHA256(this.form.password).toString(CryptoJS.enc.Hex);
   
     const registrationPayload = {
       firstName: this.form.firstName,
       lastName: this.form.lastName,
       email: this.form.email,
       phoneNumber: this.form.phone,
-      password: this.form.password,
+      password: hashedPassword,
       dateOfBirth: dob.toISOString()
     };
     

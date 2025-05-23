@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../services/Claimportal.service';
 import { NavigationService } from '../services/navigation.service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -39,10 +40,12 @@ export class LoginComponent {
       alert('Please fill in both email and password.');
       return;
     }
+
+    const hashedPassword = CryptoJS.SHA256(this.form.password).toString(CryptoJS.enc.Hex);
   
     const payload = {
       email: this.form.email,
-      password: this.form.password
+      password: hashedPassword
     };
   
     this.authService.login(payload).subscribe({
